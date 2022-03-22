@@ -38,9 +38,12 @@ nano /etc/hosts
 nano /etc/network/interfaces
 
 # Add the below at the end of the file
-auto enp0s8
-iface ep0s8 inet static
-address [IP-Address-Of-VM]
+auto lo
+iface lo inet loopback
+
+auto ens18
+iface ens18 inet static
+address 192.168.0.111
   
 # Install OpenSSH Server
 sudo apt-get install openssh-server
