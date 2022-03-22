@@ -61,7 +61,9 @@ deb http://apt.kubernetes.io/ kubernetes-xenial main
 EOF
 apt-get update
 apt-get install -y kubelet kubeadm kubectl
-apt-mark hold kubelet kubeadm kubectl
+  
+apt-mark hold kubelet kubeadm kubectl     #not needed
+apt-mark unhold kubelet kubeadm kubectl     #not needed
   
   
 # Update the Kubernetes configuration
@@ -113,3 +115,17 @@ gnome-tweaks
 
 #-----------------------(100)END-----------------------------
 #-------------------------------------------------------
+  
+  
+  
+  
+  
+  
+  
+  
+  sudo swapoff -a
+sudo sed -i '/ swap / s/^/#/' /etc/fstab
+# Reboot a machine after that.
+kubeadm reset
+kubeadm init --ignore-preflight-errors all
+  
