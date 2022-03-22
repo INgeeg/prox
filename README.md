@@ -10,7 +10,7 @@ ip a --- find ip/hostname of ubuntu
 
 
 #install qemu client
-sudo apt-get install qemu-guest-install
+sudo apt-get install qemu-guest-agent
 
 
 #------------(1)PREPARE VM for K8S-------------------------
