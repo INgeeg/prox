@@ -40,10 +40,26 @@ nano /etc/network/interfaces
 # Add the below at the end of the file
 auto enp0s8
 iface ep0s8 inet static
-address <IP-Address-Of-VM>
+address [IP-Address-Of-VM]
   
 # Install OpenSSH Server
 sudo apt-get install openssh-server
+
+# Install Docker
+sudo su
+apt-get update
+apt-get install -y docker.io
+
+# Run the following commands before installing the Kube environemnt
+apt-get update && apt-get install -y apt-transport-https curl
+curl -s https://packages.cloud.google.com/apt/doc/apt-key.gpg | apt-key add -
+cat <<EOF >/etc/apt/sources.list.d/kubernetes.list
+deb http://apt.kubernetes.io/ kubernetes-xenial main
+EOF
+apt-get update
+apt-get install -y kubelet kubeadm kubectl
+apt-mark hold kubelet kubeadm kubectl
+
 
 #-----------------------(1)END-----------------------------
 #-------------------------------------------------------
