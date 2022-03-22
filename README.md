@@ -79,7 +79,7 @@ Add kmaster to knode in /etc/hosts file and vice versa
   
   
 # On Master
-sudo kubeadm init --pod-network-cidr=192.168.0.0/16 --apiserver-advertise-address=192.168.0.188
+sudo kubeadm init --pod-network-cidr=192.168.0.0/16 --apiserver-advertise-address=192.168.0.188 --ignore-preflight-errors='All'
 // For starting a Calico CNI: 192.168.0.0/16 or For starting a Flannel CNI: 10.244.0.0/16
   
 # Run the following commands as normal user
