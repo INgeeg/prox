@@ -59,6 +59,26 @@ EOF
 apt-get update
 apt-get install -y kubelet kubeadm kubectl
 apt-mark hold kubelet kubeadm kubectl
+  
+  
+# Update the Kubernetes configuration
+nano /etc/systemd/system/kubelet.service.d/10-kubeadm.conf
+  
+# Add the below after the last line
+Environment="cgroup-driver-systemd/cgroup-driver-cgroupfs"
+  
+  
+  
+  
+  
+# On Master
+sudo kubeadm init --pod-network-cidra=‹› --apiserver-advertise-address=<ip-address-of-master>
+// For starting a Calico CNI: 192.168.0.0/16 or For starting a Flannel CNI: 10.244.0.0/16
+  
+# Run the following commands as normal user
+mkdir -p $HOME/.kube
+sudo cp -i /etc/kubernetes/admin.conf $HOME/.kube/config
+sudo chown $(id -u):$(id -g) $HOME/.kube/config
 
 
 #-----------------------(1)END-----------------------------
