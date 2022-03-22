@@ -65,7 +65,7 @@ apt-mark hold kubelet kubeadm kubectl
 nano /etc/systemd/system/kubelet.service.d/10-kubeadm.conf
   
 # Add the below after the last line
-Environment="cgroup-driver-systemd/cgroup-driver-cgroupfs"
+Environment="cgroup-driver=systemd/cgroup-driver=cgroupfs"
   
   
   
