@@ -2,6 +2,8 @@ sudo apt update
 
 sudo apt-get update
 
+sudo nano /etc/hostname			#change to whatever name
+
 sudo swapoff -a
 
 sudo nano /etc/fstab
