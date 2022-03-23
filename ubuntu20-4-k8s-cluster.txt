@@ -149,7 +149,7 @@ kubectl apply -f nginx-deploy.yaml
 kubectl get pods
 kubectl get services 
 kubectl get pods --all-namespaces
-kubectl get pods -o wide						with available IPs
+kubectl get pods -o wide --all-namespaces			with available IPs
 kubectl get deployment nginx-deployment				particular deployment
 kubectl get pod nginx-deployment-559cdc6ddd-bh5zq -o yaml
 kubectl get nodes
