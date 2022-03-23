@@ -1,2 +1,166 @@
 sudo swapoff -a
+
 sudo nano /etc/fstab
+
+sudo reboot
+
+sudo apt update
+
+sudo apt-get update
+
+sudo apt-get install -y apt-transport-https ca-certificates curl gnupg lsb-release
+
+sudo apt-get install -y docker.io
+
+sudo systemctl status docker.service       #check if docker is running if not try below
+
+sudo systemctl start docker.service       
+
+sudo systemctl enable docker.service
+
+sudo apt-get install -y apt-transport-https
+
+sudo apt-get install curl
+
+curl -s https://packages.cloud.google.com/apt/doc/apt-key.gpg | sudo apt-key add -
+
+sudo apt-add-repository "deb http://apt.kubernetes.io/ kubernetes-xenial main"
+
+sudo apt-get install -y kubelet kubeadm kubectl
+
+sudo apt-mark hold kubelet kubeadm kubectl
+
+sudo sed -i "s/cgroup-driver=systemd/cgroup-driver=cgroupfs/g" /etc/systemd/system/kubelet.service.d/10-kubeadm.conf
+
+sudo systemctl daemon-reload
+
+sudo systemctl restart kubelet
+--------------------------------
+
+sudo kubeadm init --pod-network-cidr=192.168.10.0/24    			#only on master
+
+
+
+
+
+
+
+//after here I used below commands to resolve issue with kubelet
+instead of using ->Environment="cgroup-driver=systemd/cgroup-driver=cgroupfs"  in conf file
+I used - > Environment="KUBELET_EXTRA_ARGS=--cgroup-driver=cgroupfs"
+systemctl daemon-reload			#reload after conf of particular service is changed
+sudo systemctl status kubelet.service		#check if kubelet is working
+tail -f /var/log/syslog			#check for most recent logs holisticly
+sudo nano /etc/systemd/system/kubelet.service.d/10-kubeadm.conf		#kubelet conf file
+docker info | grep -i cgroup			#check if docker cgroup value is matching Kubelet cgroup value which is cgroupfs
+
+doing it twice or rebooting and doing again solved the problem
+
+//-----------after above troubleshooting I run >  sudo kubeadm init --pod-network-cidr=192.168.10.0/24 --ignore-preflight-errors='All'
+which gave me below results
+
+
+Your Kubernetes control-plane has initialized successfully!
+
+To start using your cluster, you need to run the following as a regular user:
+
+  mkdir -p $HOME/.kube
+  sudo cp -i /etc/kubernetes/admin.conf $HOME/.kube/config
+  sudo chown $(id -u):$(id -g) $HOME/.kube/config
+
+Alternatively, if you are the root user, you can run:
+
+  export KUBECONFIG=/etc/kubernetes/admin.conf
+
+You should now deploy a pod network to the cluster.
+Run "kubectl apply -f [podnetwork].yaml" with one of the options listed at:
+  https://kubernetes.io/docs/concepts/cluster-administration/addons/
+
+Then you can join any number of worker nodes by running the following on each as root:
+
+kubeadm join 192.168.0.169:6443 --token 825fyy.b6qt0a7rpkac2oit \
+	--discovery-token-ca-cert-hash sha256:3c303ab13a9d78f3ef785193d268c815908026abf464f7c9eb9846b37539b5ff
+	
+
+
+
+
+
+-------------------on master node------------------------------
+mkdir -p $HOME/.kube
+
+sudo cp -i /etc/kubernetes/admin.conf $HOME/.kube/config
+
+sudo chown $(id -u):$(id -g) $HOME/.kube/config
+
+kubeadm version
+
+kubectl get nodes
+
+kubectl apply -f "https://cloud.weave.works/k8s/net?k8s-version=$(kubectl version| base64 | tr -d '\n')"			#Install the Weave network plugin to communicate master and worker nodes.
+
+kubectl get nodes			#now it should be ready
+
+
+
+
+-------------------on Worker node------------------------------
+//we need to make sure that kubelet works here as well and then we can join to master
+sudo kubeadm join 192.168.0.169:6443 --token 825fyy.b6qt0a7rpkac2oit --discovery-token-ca-cert-hash sha256:3c303ab13a9d78f3ef785193d268c815908026abf464f7c9eb9846b37539b5ff
+
+
+-------------------on master node------------------------------
+kubectl get nodes
+
+kubectl label node knode1 node-role.kubernetes.io/worker=worker
+
+//now we can create yaml 
+sudo nano nginx-deploy.yaml
+
+
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: nginx-deployment
+  labels:
+    app: nginx-app
+
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: nginx-app
+  template:
+    metadata:
+      labels:
+        app: nginx-app
+    spec:
+      containers:
+      - name: nginx-container
+        image: nginx:latest
+        ports:
+        - containerPort: 80
+        
+        
+
+kubectl apply -f nginx-deploy.yaml
+
+
+kubectl get pods
+kubectl get services 
+kubectl get pods --all-namespaces
+kubectl get pods -o wide						with available IPs
+kubectl get deployment nginx-deployment				particular deployment
+kubectl get pod nginx-deployment-559cdc6ddd-bh5zq -o yaml
+kubectl get nodes
+kubectl describe nodes knode1					#details about particular VM
+kubectl describe pods my-pod nginx-deployment-559cdc6ddd-p8dgb
+kubectl get configmap
+kubectl get events
+kubectl diff -f ./nginx-deploy.yaml				#check for changes
+
+
+	
+	
+	
+
