@@ -164,7 +164,7 @@ spec:
 
 kubectl apply -f nginx-deploy.yaml
 
-
+kubectl get all
 kubectl get pods
 kubectl get services 
 kubectl get pods --all-namespaces
