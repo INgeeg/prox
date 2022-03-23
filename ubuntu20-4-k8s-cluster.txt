@@ -104,6 +104,18 @@ kubectl create -f https://raw.githubusercontent.com/kubernetes/dashboard/master/
 By default dashboard will not be visible on the Master VM. Run the following command in the command line:
 kubectl proxy			#service will be started on particular port
 
+To view the dashboard in the browser, navigate to the following address in the browser of your Master VM: http://localhost:8001/api/v1/namespaces/kube-system/services/https:kubernetes-dashboard:/proxy/
+
+kubectl create serviceaccount dashboard -n default			#This command will create a service account for dashboard in the default namespace
+
+kubectl create clusterrolebinding dashboard-admin -n default --clusterrole=cluster-admin --serviceaccount=default:dashboard			# This command will add the cluster binding rules to your dashboard account
+
+kubectl get secret $(kubectl get serviceaccount dashboard -o jsonpath="{.secrets[0].name}") -o jsonpath="{.data.token}" | base64 --decode		#This command will give you the token required for your dashboard login
+
+
+
+
+
 
 
 kubectl get nodes			#now it should be ready
