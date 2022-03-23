@@ -99,6 +99,13 @@ kubectl get nodes
 
 kubectl apply -f "https://cloud.weave.works/k8s/net?k8s-version=$(kubectl version| base64 | tr -d '\n')"			#Install the Weave network plugin to communicate master and worker nodes.
 
+kubectl create -f https://raw.githubusercontent.com/kubernetes/dashboard/master/src/deploy/recommended/kubernetes-dashboard.yaml		#this is a separate pod of service that will appeare in kmaster list of pods
+
+By default dashboard will not be visible on the Master VM. Run the following command in the command line:
+kubectl proxy			#service will be started on particular port
+
+
+
 kubectl get nodes			#now it should be ready
 
 
