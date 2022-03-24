@@ -1,0 +1,129 @@
+kubectl apply -f https://raw.githubusercontent.com/kubernetes/dashboard/v2.5.0/aio/deploy/recommended.yaml
+kubectl proxy
+http://localhost:8001/api/v1/namespaces/kubernetes-dashboard/services/https:kubernetes-dashboard:/proxy/
+
+
+# create user for dashboard
+
+apiVersion: v1
+kind: ServiceAccount
+metadata:
+  name: admin-user
+  namespace: kubernetes-dashboard
+
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRoleBinding
+metadata:
+  name: admin-user
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  kind: ClusterRole
+  name: cluster-admin
+subjects:
+- kind: ServiceAccount
+  name: admin-user
+  namespace: kubernetes-dashboard
+  
+  
+        
+        
+        
+        
+        
+        
+# then get token
+kubectl -n kubernetes-dashboard get secret				#obtain the id of dashboard and provide to the next token
+kubectl -n kubernetes-dashboard get secret kubernetes-dashboard-token-ccpq8 -o go-template="{{.data.token | base64decode}}"
+
+
+
+
+
+
+
+
+
+disregard all above and install rancher instead
+sudo docker run -d --restart=unless-stopped -p 8080:8080 -v /opt/rancher:/var/lib/rancher rancher/server:latest
+sudo netstat -nltp			#check if rancher is listening
+
+
+
+
+
+technotim
+
+installed helm
+kubectl create namespace cattle-system
+
+-e CATTLE_AGENT_IP="192.168.0.169"
+
+
+
+
+
+
+
+
+
+
+
+
+  
+        
+
+
+
+
+
+kubectl delete pod kubernetes-dashboard-6bd77794f-dnhpj -n kubernetes-dashboard
+
+
+
+
+
+
+kubectl create serviceaccount dashboard -n kubernetes-dashboard
+kubectl get secret $(kubectl get serviceaccount dashboard -o jsonpath="{.secrets[0].name}") -o jsonpath="{.data.token}" | base64 --decode
+
+
+
+
+kubectl get serviceaccount -A
+kubectl get all -A
+kubectl api-resources
+kubectl cluster-info
+
+
+
+
+
+
+
+
+
+
+
+
+INSTALLING .NET6 on Ubuntu
+sudo apt update 
+sudo apt install apt-transport-https 
+sudo apt install dotnet-sdk-6.0
+dotnet --version
+
+
+
+dotnet new --list               #shows templates  
+dotnet new webapi -o TestKafka
+dotnet add package Confluent.Kafka
+dotnet add package kafka-sharp
+dotnet add package Confluent.SchemaRegistry.Serdes.Avro
+dotnet add package Microsoft.Extensions.Configuration -Version 6.0.1
+dotnet add package Microsoft.Azure.Data.SchemaRegistry.ApacheAvro
+dotnet add package Microsoft.Extensions.Hosting
+
+
+dotnet new webapi -n ApacheKafkaProducerDemo
+dotnet new console -n ApacheKafkaConsumerDemo
+dotnet new sln --name KafkaCSharp
+dotnet sln KafkaCSharp.sln add ApacheKafkaProducerDemo/ApacheKafkaProducerDemo.csproj ApacheKafkaConsumerDemo/ApacheKafkaConsumerDemo.csproj
