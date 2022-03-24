@@ -9,3 +9,6 @@ dotnet add package GraphQL.Server.Ui.Voyager
 
 dotnet build
 dotnet run
+
+dotnet ef migrations add "Initial Migrations"
+dotnet ef database update
