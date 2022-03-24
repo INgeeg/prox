@@ -98,6 +98,32 @@ sudo chown $(id -u):$(id -g) $HOME/.kube/config
 #-------------------------------------------------------
 sudo apt-get install gnome-tweak-tool
 gnome-tweaks
+
+In our famous xrdp installation scripts, to overcome the authentication required popup box for managed color device, we basically create a file and save it as 45-allow-colord.pkla and place it in the following directory (you need admin rights to copy files in this location !!)
+
+/etc/polkit-1/localauthority/50-local.d/
+
+To bypass the system repositories refresh authentication popup box, we have to either create an addition file or update the file we have just created. 
+
+To keep it simple, we have added all the necessary authorization rules in a single file (i.e.  /etc/polkit-1/localauthority/50-local.d/45-allow-colord.pkla).   The content of the file should be similar to the one below
+
+```
+[Allow Colord all Users]
+Identity=unix-user:*
+Action=org.freedesktop.color-manager.create-device;org.freedesktop.color-manager.create-profile;org.freedesktop.color-manager.delete-device;org.freedesktop.color-manager.delete-profile;org.freedesktop.color-manager.modify-device;org.freedesktop.color-manager.modify-profile
+ResultAny=no
+ResultInactive=no
+ResultActive=yes
+
+[Allow Package Management all Users]
+Identity=unix-user:*
+Action=org.debian.apt.*;io.snapcraft.*;org.freedesktop.packagekit.*;com.ubuntu.update-notifier.*
+ResultAny=no
+ResultInactive=no
+ResultActive=yes
+```
+
+
 #-----------------------(2)END-----------------------------
 #-------------------------------------------------------
 

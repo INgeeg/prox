@@ -1,0 +1,3 @@
+.vscode
+kafka_example/**/bin
+kafka_example/**/obj
