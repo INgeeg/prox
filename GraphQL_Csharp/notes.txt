@@ -1,0 +1,8 @@
+dotnet tool install --global dotnet-ef
+dotnet new web -n TodoListGQL
+cd
+dotnet add package Microsoft.EntityFrameworkCore.Design
+dotnet add package Microsoft.EntityFrameworkCore.Sqlite
+dotnet add package HotChocolate.AspNetCore
+dotnet add package HotChocolate.Data.EntityFramework
+dotnet add package GraphQL.Server.Ui.Voyager
