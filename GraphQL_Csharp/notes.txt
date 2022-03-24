@@ -6,3 +6,6 @@ dotnet add package Microsoft.EntityFrameworkCore.Sqlite
 dotnet add package HotChocolate.AspNetCore
 dotnet add package HotChocolate.Data.EntityFramework
 dotnet add package GraphQL.Server.Ui.Voyager
+
+dotnet build
+dotnet run

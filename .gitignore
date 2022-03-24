@@ -1,3 +1,5 @@
 .vscode
 kafka_example/**/bin
 kafka_example/**/obj
+GraphQL_Csharp/**/bin
+GraphQL_Csharp/**/obj
