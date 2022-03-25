@@ -55,10 +55,7 @@ dotnet add package Microsoft.EntityFrameworkCore.Sqlite
 
 dotnet tool install --global dotnet-ef              #if not installed already
 dotnet ef migrations add "Initial Migrations"
-dotnet ef database update               #after this your app.db will be created
-
-
-
+dotnet ef database update               #after this your app.db will be created based on connection string I assume
 
 
 

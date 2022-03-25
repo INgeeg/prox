@@ -23,6 +23,15 @@ builder.Services.AddGraphQL(options =>
                 })
                 .AddSystemTextJson();
 // default setup
+builder.Services.AddCors(options =>
+{
+    options.AddDefaultPolicy(
+        builder =>
+        {
+            builder.WithOrigins("*")
+                   .AllowAnyHeader();
+        });
+});
 builder.Services.AddControllers();
 builder.Services.AddSwaggerGen(c =>
 {
