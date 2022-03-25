@@ -1,4 +1,3 @@
-
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -13,6 +12,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using TodoListQL.Data;
+using TodoListQL.GraphQL;
 
 
 
@@ -21,12 +21,13 @@ var builder = WebApplication.CreateBuilder(args);
 ConfigurationManager Configuration = builder.Configuration;
 IWebHostEnvironment env = builder.Environment;
 
+
 builder.Services.AddPooledDbContextFactory<ApiDbContext>(options =>
                 options.UseSqlite(
                     Configuration.GetConnectionString("DefaultConnection")
                 ));
-// builder.Services.AddGraphQLServer()
-//                         .AddQueryType<Query>()
+builder.Services.AddGraphQLServer()
+                        .AddQueryType<Query>();
 //                         .AddType<ListType>()
 //                         .AddProjections()
 //                         .AddMutationType<Mutation>()
@@ -42,14 +43,14 @@ if (env.IsDevelopment())
 
 app.UseRouting();
 
-// app.UseEndpoints(endpoints =>
-// {
-//     endpoints.MapGraphQL();
-// });
+app.UseEndpoints(endpoints =>
+{
+    endpoints.MapGraphQL();
+});
 
-// app.UseGraphQLVoyager(new VoyagerOptions()
-// {
-//     GraphQLEndPoint = "/graphql"
-// }, "/graphql-ui");
+app.UseGraphQLVoyager(new VoyagerOptions()
+{
+    GraphQLEndPoint = "/graphql"
+}, "/graphql-ui");
 
 app.Run();
