@@ -41,7 +41,8 @@ export PATH="$PATH:/Users/alisher/.dotnet/tools"
 
 
 
-//////////////////ANOTHER SIMILR APP
+//////////////////ANOTHER SIMILR APP above did not work
+https://dev.to/berviantoleo/getting-started-graphql-in-net-6-part-1-4ic2
 
 dotnet new webapi -o GraphQLNet
 dotnet new sln                              #will create sln file in the name of current folder
