@@ -47,6 +47,8 @@ dotnet new webapi -o GraphQLNet
 dotnet new sln                              #will create sln file in the name of current folder
 dotnet sln add GraphQLNet                   #will add that folder to sln file as a record
 dotnet restore                              #after updatetin csproj
+dotnet run
+https://localhost:7038/ui/altair
 
 
 

@@ -1,11 +1,27 @@
+using GraphQL;
+using GraphQL.MicrosoftDI;
+using GraphQL.Server;
+using GraphQL.SystemTextJson;
+using GraphQL.Types;
+using GraphQLNet.Notes;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
-
+// add notes schema
+builder.Services.AddSingleton<ISchema, NotesSchema>(services => new NotesSchema(new SelfActivatingServiceProvider(services)));
+// register graphQL
+builder.Services.AddGraphQL(options =>
+                {
+                options.EnableMetrics = true;
+                })
+                .AddSystemTextJson();
+// default setup
 builder.Services.AddControllers();
-// Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
-builder.Services.AddEndpointsApiExplorer();
-builder.Services.AddSwaggerGen();
+builder.Services.AddSwaggerGen(c =>
+{
+    c.SwaggerDoc("v1", new() { Title = "GraphQLNetExample", Version = "v1" });
+});
 
 var app = builder.Build();
 
@@ -13,7 +29,9 @@ var app = builder.Build();
 if (app.Environment.IsDevelopment())
 {
     app.UseSwagger();
-    app.UseSwaggerUI();
+    app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "GraphQLNet v1"));
+    // add altair UI to development only
+    app.UseGraphQLAltair();
 }
 
 app.UseHttpsRedirection();
@@ -21,5 +39,8 @@ app.UseHttpsRedirection();
 app.UseAuthorization();
 
 app.MapControllers();
+
+// make sure all our schemas registered to route
+app.UseGraphQL<ISchema>();
 
 app.Run();
