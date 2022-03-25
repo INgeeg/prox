@@ -1,10 +1,9 @@
 using System.ComponentModel.DataAnnotations;
 namespace GraphQLNet.Notes;
 
-public class Note
+public class Todo
 {
   public Guid Id { get; set; }
   [Required]
-  public string Message { get; set; }
-  public string Comment { get; set; }
+  public string Note { get; set; }
 } 
