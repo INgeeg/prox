@@ -50,6 +50,12 @@ dotnet restore                              #after updatetin csproj
 dotnet run
 https://localhost:7038/ui/altair
 
+dotnet add package Microsoft.EntityFrameworkCore.Design
+dotnet add package Microsoft.EntityFrameworkCore.Sqlite
+
+dotnet tool install --global dotnet-ef              #if not installed already
+dotnet ef migrations add "Initial Migrations"
+dotnet ef database update               #after this your app.db will be created
 
 
 
