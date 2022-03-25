@@ -4,10 +4,16 @@ using GraphQL.Server;
 using GraphQL.SystemTextJson;
 using GraphQL.Types;
 using GraphQLNet.Notes;
+using GraphQLNet.EntityFramework;
+using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
+builder.Services.AddDbContext<NotesContext>(options =>
+{
+    options.UseSqlite(builder.Configuration.GetConnectionString("Default"));
+});
 // add notes schema
 builder.Services.AddSingleton<ISchema, NotesSchema>(services => new NotesSchema(new SelfActivatingServiceProvider(services)));
 // register graphQL
