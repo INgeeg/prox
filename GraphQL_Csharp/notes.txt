@@ -64,6 +64,14 @@ dotnet ef database update               #after this your app.db will be created 
 
 
 
+//////////////////////Try with HotChocolate    https://dotnetthoughts.net/getting-started-with-graphql-aspnetcore/
+dotnet new webapi -o GraphQLHotChocolate
+dotnet add package HotChocolate.AspNetCore
+
+
+
+
+
 
 
 
