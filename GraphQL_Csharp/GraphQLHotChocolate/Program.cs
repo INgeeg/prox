@@ -39,16 +39,17 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using GraphQLHotChocolate.Data;
 using GraphQLHotChocolate.GraphQL;
-
+using GraphQLHotChocolate.GraphQL.DataItem;
+using L = GraphQLHotChocolate.GraphQL.Lists;
 
 
 var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddGraphQLServer()
                     //.AddQueryType<Other.Query>();
                     .AddQueryType<Query>()
-                    // .AddType<ItemType>()
-                    // .AddType<ListType>()
-                     .AddProjections();
+                    //.AddType<ItemType>()
+                    //.AddType<L.ListType>()
+                    .AddProjections();
                     // .AddSorting()
                     // .AddFiltering();
 builder.Services.AddPooledDbContextFactory<ApiDbContext>(options =>
