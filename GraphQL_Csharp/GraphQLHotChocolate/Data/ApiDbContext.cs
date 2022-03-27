@@ -1,6 +1,8 @@
 
 using Microsoft.EntityFrameworkCore;
+using GraphQLHotChocolate.Models;
 
+namespace GraphQLHotChocolate.Data;
 public class ApiDbContext : DbContext
 {
     public virtual DbSet<ItemData> Items {get;set;}

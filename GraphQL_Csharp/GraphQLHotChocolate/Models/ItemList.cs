@@ -1,4 +1,6 @@
 using System.Linq;
+
+namespace GraphQLHotChocolate.Models;
 public class ItemList
 {
     public ItemList()

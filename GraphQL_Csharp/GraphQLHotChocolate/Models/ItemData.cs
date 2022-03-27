@@ -1,3 +1,4 @@
+namespace GraphQLHotChocolate.Models;
 
 [GraphQLDescription("Used to define todo item for a specific list")]
 public class ItemData

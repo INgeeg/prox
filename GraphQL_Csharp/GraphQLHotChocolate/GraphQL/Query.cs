@@ -1,3 +1,7 @@
+using GraphQLHotChocolate.Data;
+using GraphQLHotChocolate.Models;
+
+namespace GraphQLHotChocolate.GraphQL;
 public class Query
 {
     // Will return all of our todo list items
