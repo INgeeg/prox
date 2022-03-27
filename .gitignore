@@ -7,3 +7,6 @@ GraphQL_Csharp/TodoListGQL/app.db
 GraphQL_Csharp/GraphQLNet/app.db
 GraphQL_Csharp/GraphQLNet/app.db-wal
 GraphQL_Csharp/GraphQLNet/app.db-shm
+GraphQL_Csharp/GraphQLHotChocolate/app.db
+GraphQL_Csharp/GraphQLHotChocolate/app.db-shm
+GraphQL_Csharp/GraphQLHotChocolate/app.db-wal

@@ -1,6 +1,6 @@
 using System.Linq;
 
-
+namespace Other;
 public class Link
 {
     public int Id { get; set; }

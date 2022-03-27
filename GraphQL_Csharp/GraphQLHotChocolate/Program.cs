@@ -25,8 +25,34 @@
 // app.Run();
 
 
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Threading.Tasks;
+using HotChocolate.Types;
+using Microsoft.AspNetCore.Builder;
+using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.Http;
+using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Configuration;
+using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.Hosting;
+
+
+
 var builder = WebApplication.CreateBuilder(args);
-builder.Services.AddGraphQLServer().AddQueryType<Query>();;
+builder.Services.AddGraphQLServer()
+                    //.AddQueryType<Other.Query>();
+                    .AddQueryType<Query>()
+                    // .AddType<ItemType>()
+                    // .AddType<ListType>()
+                     .AddProjections();
+                    // .AddSorting()
+                    // .AddFiltering();
+builder.Services.AddPooledDbContextFactory<ApiDbContext>(options =>
+        options.UseSqlite(
+            builder.Configuration.GetConnectionString("DefaultConnection")
+        ));
 var app = builder.Build();
 
 app.MapGet("/", () => "Hello World!");
