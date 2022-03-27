@@ -55,7 +55,6 @@ builder.Services.AddPooledDbContextFactory<ApiDbContext>(options =>
         ));
 var app = builder.Build();
 
-app.MapGet("/", () => "Hello World!");
 app.UseRouting();
 app.UseEndpoints(endpoints =>
 {
