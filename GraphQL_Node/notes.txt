@@ -9,3 +9,5 @@ sudo npm install -g typescript
 npm init
 npm install type-graphql reflect-metadata graphql express class-validator apollo-server-express apollo-server-core mongoose @typegoose/typegoose --save
 npm install types/express @types/node typescript ts-node nodemon --save-dev      #dev dependencis
+
+tsc --init
