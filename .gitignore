@@ -10,5 +10,5 @@ GraphQL_Csharp/GraphQLNet/app.db-shm
 GraphQL_Csharp/GraphQLHotChocolate/app.db
 GraphQL_Csharp/GraphQLHotChocolate/app.db-shm
 GraphQL_Csharp/GraphQLHotChocolate/app.db-wal
-GraphQL_Node/node_modules
-GraphQL_Node/dist
+GraphQL_Node/**/node_modules
+GraphQL_Node/**/dist
