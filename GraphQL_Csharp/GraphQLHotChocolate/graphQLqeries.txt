@@ -1,0 +1,61 @@
+query {
+  lists(where: {id: {eq: 1} })
+  {
+    id
+    name
+    itemDatas {
+       id
+       title
+    }
+  }
+}
+
+
+
+
+query{
+  lists(order: {name: DESC})
+  {
+    id
+    name
+  }
+}
+
+
+
+
+
+
+
+mutation{
+  addList(input: {
+    name: "Food"
+  })
+  {
+    list
+    {
+      name
+    }
+  }
+}
+
+
+
+
+
+
+mutation{
+  addItem(input: {
+    title: "Bring laptop",
+    description: "Bring the laptop with charger",
+    done: true,
+    listId: 1
+  })
+  {
+    item
+    {
+      id
+      title
+    }
+  }
+}
