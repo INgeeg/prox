@@ -49,6 +49,7 @@ builder.Services.AddGraphQLServer()
                     .AddQueryType<Query>()
                     .AddType<ItemType>()
                     .AddType<L.ListType>()
+                    .AddMutationType<Mutation>()
                     .AddProjections()
                     .AddSorting()
                     .AddFiltering();
