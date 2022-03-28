@@ -7,5 +7,16 @@
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "",
-  "license": "ISC"
+  "license": "ISC",
+  "dependencies": {
+    "@typegoose/typegoose": "^9.7.1",
+    "apollo-server-core": "^3.6.6",
+    "apollo-server-express": "^3.6.6",
+    "class-validator": "^0.13.2",
+    "express": "^4.17.3",
+    "graphql": "^15.8.0",
+    "mongoose": "^6.2.8",
+    "reflect-metadata": "^0.1.13",
+    "type-graphql": "^1.1.1"
+  }
 }
