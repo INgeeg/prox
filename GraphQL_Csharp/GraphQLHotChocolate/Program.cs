@@ -47,11 +47,11 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddGraphQLServer()
                     //.AddQueryType<Other.Query>();
                     .AddQueryType<Query>()
-                    //.AddType<ItemType>()
-                    //.AddType<L.ListType>()
-                    .AddProjections();
-                    // .AddSorting()
-                    // .AddFiltering();
+                    .AddType<ItemType>()
+                    .AddType<L.ListType>()
+                    .AddProjections()
+                    .AddSorting()
+                    .AddFiltering();
 builder.Services.AddPooledDbContextFactory<ApiDbContext>(options =>
         options.UseSqlite(
             builder.Configuration.GetConnectionString("DefaultConnection")
