@@ -1,0 +1,8 @@
+--install/upgrade node/npm
+sudo npm install -g npm@latest
+sudo npm cache clean -f
+sudo npm install -g n
+sudo n stable
+
+sudo npm install -g typescript
+npm init
