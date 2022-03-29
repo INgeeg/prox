@@ -1,0 +1,42 @@
+--on master
+
+export PATH=/home/alik/Documents/istio-1.13.2/bin:$PATH
+
+kubectl get ns
+
+istioctl install                #will install by default ["Istio core" "Istiod" "Ingress gateways"]
+kubectl get pod -n istio-system -o wide                     # will have to pods running
+kubectl apply -f kubernetes-manifests.yaml
+kubectl get pod
+kubectl get ns default --show-labels
+kubectl label namespace default istio-injection=enabled             #pods with this lable will install envy agent from instio 
+kubectl delete -f kubernetes-manifests.yaml       #https://github.com/GoogleCloudPlatform/microservices-demo
+kubectl apply -f kubernetes-manifests.yaml     # reload all pods
+kubectl get pod
+
+kubectl apply -f istio-1.13.2/samples/addons
+kubectl get pod -n istio-system -o wide  
+kubectl get svc -n istio-system  
+kubectl port-forward svc/kiali -n istio-system 20001
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+kubectl get ns
+kubectl get pod -n istio-system -o wide
+kubectl api-resources
+kubectl api-resources --verbs=list --namespaced -o name
+kubectl  get pods -n istio-system | grep Pending | awk '{print $1}' | xargs kubectl -n istio-system delete pod -o name
