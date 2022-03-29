@@ -104,11 +104,12 @@ dotnet add package MongoDB.Bson
 
 
 
-
+https://docs.microsoft.com/en-us/azure/cosmos-db/mongodb/create-mongodb-dotnet
 ///////////cosmosmongo-webapi
 dotnet new -i Microsoft.Azure.Cosmos.Templates                      #install Templates
 dotnet new cosmosmongo-webapi -o cosmosmongo-webapi
-
+--add cosmosdb connection string
+dotnet run
 
 
 

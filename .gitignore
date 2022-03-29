@@ -12,3 +12,5 @@ GraphQL_Csharp/GraphQLHotChocolate/app.db-shm
 GraphQL_Csharp/GraphQLHotChocolate/app.db-wal
 GraphQL_Node/**/node_modules
 GraphQL_Node/**/dist
+cosmosmongo-webapi/bin
+cosmosmongo-webapi/obj
