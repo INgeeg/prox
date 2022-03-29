@@ -14,3 +14,5 @@ GraphQL_Node/**/node_modules
 GraphQL_Node/**/dist
 cosmosmongo-webapi/bin
 cosmosmongo-webapi/obj
+Mongo_CSharp/**/bin
+Mongo_CSharp/**/obj
