@@ -88,7 +88,7 @@ dotnet add package HotChocolate.Data.EntityFramework
 
 
 
-/////////////QL_Mongo_Chocolate///////////
+/////////not finished////QL_Mongo_Chocolate///////////
 dotnet new webapi -o QL_Mongo_Chocolate
 dotnet add package HotChocolate
 dotnet add package HotChocolate.AspNetCore
@@ -102,6 +102,12 @@ dotnet add package MongoDB.Bson
 
 
 
+
+
+
+///////////Cosmos_Mongo
+dotnet new -i Microsoft.Azure.Cosmos.Templates                      #install Templates
+dotnet new cosmosmongo-webapi
 
 
 
