@@ -105,9 +105,9 @@ dotnet add package MongoDB.Bson
 
 
 
-///////////Cosmos_Mongo
+///////////cosmosmongo-webapi
 dotnet new -i Microsoft.Azure.Cosmos.Templates                      #install Templates
-dotnet new cosmosmongo-webapi
+dotnet new cosmosmongo-webapi -o cosmosmongo-webapi
 
 
 
