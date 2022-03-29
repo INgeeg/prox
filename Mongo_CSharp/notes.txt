@@ -1,5 +1,5 @@
 
-
+https://docs.microsoft.com/en-us/azure/cosmos-db/mongodb/connect-mongodb-account
 https://docs.microsoft.com/en-us/azure/cosmos-db/mongodb/create-mongodb-dotnet
 ///////this is in solution////cosmosmongo-webapi
 dotnet new -i Microsoft.Azure.Cosmos.Templates                      #install Templates
