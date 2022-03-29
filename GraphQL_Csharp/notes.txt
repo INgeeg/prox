@@ -1,3 +1,5 @@
+
+/////////////////THIS PROJECT IS IN SOLUTION CALLED GraphQLNet
 https://dev.to/moe23/net-5-api-with-graphql-step-by-step-2b20
 
 dotnet tool install --global dotnet-ef
@@ -41,7 +43,7 @@ export PATH="$PATH:/Users/alisher/.dotnet/tools"
 
 
 
-//////////////////ANOTHER SIMILR APP above did not work
+////////THIS PROJECT IS NOT IN SOLUTION//////////ANOTHER SIMILR APP above did not work
 https://dev.to/berviantoleo/getting-started-graphql-in-net-6-part-1-4ic2
 
 dotnet new webapi -o GraphQLNet
@@ -55,9 +57,6 @@ dotnet add package Microsoft.EntityFrameworkCore.Design
 dotnet add package Microsoft.EntityFrameworkCore.Sqlite
 
 
-
-
-
 dotnet tool install --global dotnet-ef              #if not installed already
 dotnet ef migrations add "Initial Migrations"
 dotnet ef database update               #after this your app.db will be created based on connection string I assume
@@ -68,13 +67,35 @@ dotnet ef database update               #after this your app.db will be created 
 
 
 
-//////////////////////Try with HotChocolate    https://dotnetthoughts.net/getting-started-with-graphql-aspnetcore/
+
+
+
+
+
+////////////THIS ONE IS IN SOLUTION AS GraphQLHotChocolate project//////////////////////Try with HotChocolate    https://dotnetthoughts.net/getting-started-with-graphql-aspnetcore/
 dotnet new webapi -o GraphQLHotChocolate
 dotnet add package HotChocolate.AspNetCore
 
 dotnet add package Microsoft.EntityFrameworkCore.Design
 dotnet add package Microsoft.EntityFrameworkCore.Sqlite
 dotnet add package HotChocolate.Data.EntityFramework
+
+
+
+
+
+
+
+
+
+/////////////QL_Mongo_Chocolate///////////
+dotnet new webapi -o QL_Mongo_Chocolate
+dotnet add package HotChocolate
+dotnet add package HotChocolate.AspNetCore
+dotnet add package MongoDB.Bson
+
+
+
 
 
 
