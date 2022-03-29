@@ -1,0 +1,2 @@
+https://www.youtube.com/watch?v=dwMFg6uxQ0I
+dotnet new web -o dapper_minimal_api
