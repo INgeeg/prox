@@ -13,3 +13,5 @@ ENTRYPOINT [ "dotnet", "dapper_minimal_api.dll" ]
 
 #docker build -t dapper:1.2 .
 #docker images | grep dapper
+#docker run --rm -it -p 8000:80 --env-file .env dapper:1.2
+#http://localhost:8000/settings
