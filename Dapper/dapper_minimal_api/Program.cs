@@ -7,6 +7,7 @@ builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 builder.Services.AddSingleton<ISqlDataAccess, SqlDataAccess>();
 builder.Services.AddSingleton<IUserData, UserData>();
+builder.Services.Configure<ExampleSettings>(builder.Configuration.GetSection("ExampleSetting")); 
 
 
 var app = builder.Build();
