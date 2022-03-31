@@ -1,2 +1,7 @@
 https://www.youtube.com/watch?v=dwMFg6uxQ0I
 dotnet new web -o dapper_minimal_api
+--created app.db with User tabel
+dotnet add package Dapper
+dotnet add package Microsoft.Data.Sqlite                   #dotnet add package System.Data.SQLite
+dotnet add package System.Data
+dotnet add package Microsoft.Extensions.Configuration.Abstractions
