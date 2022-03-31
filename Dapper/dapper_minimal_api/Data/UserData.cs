@@ -12,6 +12,6 @@ internal class UserData: IUserData {
     }
 
     public Task<IEnumerable<UserModel>> GetUsers()=>
-        _db.LoadData<UserModel, dynamic>("select * from Users", new{ });
+        _db.LoadData<UserModel, dynamic>("select * from User", new{ });
 
 }
