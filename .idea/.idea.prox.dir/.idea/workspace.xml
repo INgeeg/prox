@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="1e4d2ac2-c819-405d-af86-1f44a9b2543d" name="Changes" comment="" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="HighlightingSettingsPerFile">
+    <setting file="file://$PROJECT_DIR$/Dapper/dapper_minimal_api/Program.cs" root0="FORCE_HIGHLIGHTING" />
+  </component>
+  <component name="MarkdownSettingsMigration">
+    <option name="stateVersion" value="1" />
+  </component>
+  <component name="ProjectId" id="27B9VplQpJhG2dvPzY5LSlyVt9f" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="nodejs_package_manager_path" value="npm" />
+    <property name="vue.rearranger.settings.migration" value="true" />
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="1e4d2ac2-c819-405d-af86-1f44a9b2543d" name="Changes" comment="" />
+      <created>1648782640600</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1648782640600</updated>
+      <workItem from="1648782645289" duration="192000" />
+      <workItem from="1648820754302" duration="856000" />
+      <workItem from="1648824841719" duration="797000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+    <option name="exactExcludedFiles">
+      <list>
+        <option value="$PROJECT_DIR$/GraphQL_Node/GraphQL_Apollo/app/server.js" />
+        <option value="$PROJECT_DIR$/GraphQL_Node/GraphQL_Apollo/app/types.js" />
+        <option value="$PROJECT_DIR$/GraphQL_Node/GraphQL_Apollo/app/entities/Product.js" />
+        <option value="$PROJECT_DIR$/GraphQL_Node/GraphQL_Apollo/app/entities/Cart.js" />
+        <option value="$PROJECT_DIR$/GraphQL_Node/GraphQL_Apollo/app/entities/Categories.js" />
+        <option value="$PROJECT_DIR$/GraphQL_Node/GraphQL_Apollo/app/entities/Order.js" />
+        <option value="$PROJECT_DIR$/GraphQL_Node/GraphQL_Apollo/app/entities/User.js" />
+        <option value="$PROJECT_DIR$/GraphQL_Node/GraphQL_Apollo/app/resolvers/Product.js" />
+        <option value="$PROJECT_DIR$/GraphQL_Node/GraphQL_Apollo/app/resolvers/Cart.js" />
+        <option value="$PROJECT_DIR$/GraphQL_Node/GraphQL_Apollo/app/resolvers/Categories.js" />
+        <option value="$PROJECT_DIR$/GraphQL_Node/GraphQL_Apollo/app/resolvers/Order.js" />
+        <option value="$PROJECT_DIR$/GraphQL_Node/GraphQL_Apollo/app/resolvers/User.js" />
+        <option value="$PROJECT_DIR$/GraphQL_Node/GraphQL_Apollo/app/resolvers/types/category-input.js" />
+        <option value="$PROJECT_DIR$/GraphQL_Node/GraphQL_Apollo/app/resolvers/types/order-input.js" />
+        <option value="$PROJECT_DIR$/GraphQL_Node/GraphQL_Apollo/app/resolvers/types/user-input.js" />
+        <option value="$PROJECT_DIR$/GraphQL_Node/GraphQL_Apollo/app/resolvers/types/product-input.js" />
+        <option value="$PROJECT_DIR$/GraphQL_Node/GraphQL_Apollo/app/resolvers/types/cart-input.js" />
+      </list>
+    </option>
+  </component>
+  <component name="UnityProjectConfiguration" hasMinimizedUI="false" />
+  <component name="UnityUnitTestConfiguration" currentTestLauncher="NUnit" />
+  <component name="VcsManagerConfiguration">
+    <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
+  </component>
+</project>

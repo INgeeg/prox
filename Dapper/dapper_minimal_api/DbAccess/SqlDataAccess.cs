@@ -12,8 +12,7 @@ internal class SqlDataAccess: ISqlDataAccess {
     }
 
     public async Task<IEnumerable<T>> LoadData<T, U>(string sQLQuery, U parameters, string connectionid = "Default"){
-
-        using var connection = new SqliteConnection(_config.GetConnectionString(connectionid));
+        await using var connection = new SqliteConnection(_config.GetConnectionString(connectionid));
         return await connection.QueryAsync<T>(sQLQuery,parameters,commandType: CommandType.Text);
 
     }

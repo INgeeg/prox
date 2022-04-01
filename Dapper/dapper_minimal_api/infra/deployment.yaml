@@ -21,8 +21,8 @@ spec:
         - containerPort: 80
         volumeMounts:
         - name: dotnet-config
-          mountPath: /app/appsettings.json
-          subPath: appsettings.json
+          mountPath: /config/appsettings.json
+#          subPath: appsettings.json
         #   - name: dotnet-secret
         #     mountPath: /app/secret 
         #     readOnly: true
