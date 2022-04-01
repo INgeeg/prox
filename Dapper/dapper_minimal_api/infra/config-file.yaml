@@ -1,0 +1,22 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: dotnet-config-file
+data:
+  appsettings.json: |
+    {
+      "Logging": {
+        "LogLevel": {
+          "Default": "Information",
+          "Microsoft.AspNetCore": "Warning"
+        }
+      },
+      "ConnectionStrings": {
+        "Default" : "Data Source=app.db; Cache=Shared"
+      },
+      "ExampleSetting":{
+        "One":"from COnfigMap1111",
+        "Two":"two"
+      },
+      "AllowedHosts": "*"
+    }

@@ -6,3 +6,88 @@ dotnet add package Microsoft.Data.Sqlite                   #dotnet add package S
 dotnet add package System.Data
 dotnet add package Microsoft.Extensions.Configuration.Abstractions
 dotnet add package Swashbuckle.AspNetCore               #for swagger
+
+
+--upload image to docker hub
+
+kubectl apply -f deployment.yaml
+kubectl create -f deployment.yaml
+kubectl delete -f deployment.yaml
+kubectl get pod
+kubectl exec -it dotnet-app-75f6449846-hbmhb -- /bin/sh          #published content in /app folder
+kubectl apply -f secret-file.yaml
+kubectl apply -f config-file.yaml
+kubectl get secrets
+kubectl get configmap
+kubectl logs dotnet-app-7794ffbccd-dltt6                #optional
+
+kubectl apply -f service.yaml                   #this is service but the type is NodePort, here pod port and service port must be 80 so that Node port can reach them 
+..and http://localhost:31000/settings
+kubectl exec -it dotnet-app-dd44dd6f-j8dv6 -- /bin/sh
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+--SOME DRAFTS
+
+kubectl expose deployment dotnet-app --type=NodePort --name=dotnet-svc
+kubectl get svc
+kubectl describe services dotnet-svc
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+kubectl expose pod dotnet-app-6b77d594d5-4z2xl --name=dotnet-svc --port=8081 --type=NodePort                          
+kubectl get svc
+kubectl describe service dotnet-svc
+kubectl get pods --selector="app=dotnet-app" --output=wide
+curl http://192.168.0.171:32436/settings
+
+kubectl exec -it dotnet-app-6b77d594d5-4z2xl -- /bin/sh
+
+kubectl get pod -o wide
+
+
+
+
+
+
+kubectl get event -n default   
+kubectl get deploy
+kubectl describe deployment
+kubectl delete svc dotnet-svc
+kubectl get svc -l app=dotnet-app            #with label
+
+
+
+
+
+
+--tired this but did not work
+docker run -d -p 5000:5000 --restart=always --name registry registry:2                 #creates local repo
+docker tag dapper:1.3 localhost:5000/dapper
+docker push localhost:5000/dapper
+--put this link to deployment.yaml  localhost:5000/dapper
