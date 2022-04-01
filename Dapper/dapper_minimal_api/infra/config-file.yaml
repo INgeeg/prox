@@ -3,6 +3,23 @@ kind: ConfigMap
 metadata:
   name: dotnet-config-file
 data:
+  appsettings.Production.json: |
+    {
+      "Logging": {
+        "LogLevel": {
+          "Default": "Information",
+          "Microsoft.AspNetCore": "Warning"
+        }
+      },
+      "ConnectionStrings": {
+        "Default" : "Data Source=app.db; Cache=Shared"
+      },
+      "ExampleSetting":{
+        "One":"from COnfigMap2222222Secondary333333333",
+        "Two":"two"
+      },
+      "AllowedHosts": "*"
+    }
   appsettings.json: |
     {
       "Logging": {
@@ -15,7 +32,7 @@ data:
         "Default" : "Data Source=app.db; Cache=Shared"
       },
       "ExampleSetting":{
-        "One":"from COnfigMap1111",
+        "One":"from COnfigMap2222222Main",
         "Two":"two"
       },
       "AllowedHosts": "*"

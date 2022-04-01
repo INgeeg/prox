@@ -16,12 +16,12 @@ spec:
     spec:
       containers:
       - name: dotnet-app
-        image: tonydoker/dapper:1.3
+        image: tonydoker/dapper:1.6
         ports:
         - containerPort: 80
         volumeMounts:
         - name: dotnet-config
-          mountPath: /config/appsettings.json
+          mountPath: /app/config
 #          subPath: appsettings.json
         #   - name: dotnet-secret
         #     mountPath: /app/secret 

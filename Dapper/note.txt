@@ -14,7 +14,7 @@ kubectl apply -f deployment.yaml
 kubectl create -f deployment.yaml
 kubectl delete -f deployment.yaml
 kubectl get pod
-kubectl exec -it dotnet-app-75f6449846-hbmhb -- /bin/sh          #published content in /app folder
+kubectl exec -it dotnet-app-6b876b86b-6qs4j -- /bin/sh          #published content in /app folder
 kubectl apply -f secret-file.yaml
 kubectl apply -f config-file.yaml
 kubectl get secrets
