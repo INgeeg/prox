@@ -29,6 +29,23 @@ kubectl exec -it dotnet-app-dd44dd6f-j8dv6 -- /bin/sh
 
 
 
+---Configure Key Vault Azure
+https://docs.microsoft.com/en-us/aspnet/core/security/key-vault-configuration?view=aspnetcore-6.0#use-application-id-and-x509-certificate-for-non-azure-hosted-apps
+https://docs.microsoft.com/en-us/cli/azure/install-azure-cli
+https://www.ssl.com/how-to/create-a-pfx-p12-certificate-file-using-openssl?utm_source=youtube&utm_medium=video&utm_campaign=pfxpk12%2F
+az login
+az group create --name "myKVaultResourceGroup" -l "CentralUS"
+az keyvault create --name "my-key-vault-store" --resource-group "myKVaultResourceGroup" --location "CentralUS"
+az keyvault secret set --vault-name "my-key-vault-store" --name "ExamplePassword" --value "hVFkk965BuUv"
+az keyvault secret set --vault-name "my-key-vault-store" --name "ExampleSetting--Two" --value "somesecrte value"
+
+
+dotnet add package Azure.Extensions.AspNetCore.Configuration.Secrets
+dotnet add package Azure.Identity
+dotnet add package Azure.Security.KeyVault.Secrets
+
+
+
 
 
 

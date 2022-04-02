@@ -33,7 +33,9 @@ internal static class Api{
                config = config.GetValue<string>("ExampleSetting:One"),
                optionValueSingleton = options.Value.One,
                optionMonitorTransient = optionsMonitor.CurrentValue.One,
-               optionSnapshotScoped = optionsSnapshot.Value.One,
+               optionSnapshotScoped = optionsSnapshot.Value.One,               
+               optionMonitorTransientTwo = optionsMonitor.CurrentValue.Two,
+
 
            }); 
         }
