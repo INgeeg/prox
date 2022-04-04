@@ -3,6 +3,12 @@ using Azure.Identity;
 using Azure.Security.KeyVault.Secrets;
 using Dapper.DbAccess;
 
+using GraphQL.Data;
+using GraphQL.GraphQL;
+using GraphQL.GraphQL.DataItem;
+using Microsoft.EntityFrameworkCore;
+using L = GraphQL.GraphQL.Lists;
+
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -17,6 +23,18 @@ builder.Configuration.AddAzureKeyVault(client, new AzureKeyVaultConfigurationOpt
     ReloadInterval = TimeSpan.FromMinutes(10)
 });
 
+builder.Services.AddGraphQLServer()
+    .AddQueryType<Query>()
+    .AddType<ItemType>()
+    .AddType<L.ListType>()
+    .AddMutationType<Mutation>()
+    .AddProjections()
+    .AddSorting()
+    .AddFiltering();
+builder.Services.AddPooledDbContextFactory<ApiDbContext>(options =>
+    options.UseSqlite(
+        builder.Configuration.GetConnectionString("Default")
+    ));
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 builder.Services.AddSingleton<ISqlDataAccess, SqlDataAccess>();
@@ -35,6 +53,11 @@ app.UseSwagger();
 app.UseSwaggerUI();
 //app.UseHttpsRedirection();
 app.ConfigureApi();
+app.UseRouting();
+app.UseEndpoints(endpoints =>
+{
+    endpoints.MapGraphQL();
+});
 
 app.Run();
 

@@ -18,6 +18,26 @@ dotnet ef migrations add "Initial Migrations"
 dotnet ef database update
 
 https://localhost:7290/graphql/
+CREATE TABLE "Items" (
+    "Id" INTEGER NOT NULL CONSTRAINT "PK_Items" PRIMARY KEY AUTOINCREMENT,
+    "Title" TEXT NOT NULL,
+    "Description" TEXT NOT NULL,
+    "Done" INTEGER NOT NULL,
+    "ListId" INTEGER NOT NULL,
+    CONSTRAINT "FK_ItemData_ItemList" FOREIGN KEY ("ListId") REFERENCES "Lists" ("Id") ON DELETE RESTRICT
+)
+
+
+CREATE TABLE "Lists" (
+    "Id" INTEGER NOT NULL CONSTRAINT "PK_Lists" PRIMARY KEY AUTOINCREMENT,
+    "Name" TEXT NOT NULL
+)
+
+CREATE INDEX "IX_Items_ListId" ON "Items" ("ListId")
+
+
+
+
 
 
 
