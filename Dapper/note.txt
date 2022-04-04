@@ -52,7 +52,11 @@ dotnet add package Polly
 
 
 
-
+--create secret
+dotnet user-secrets init
+dotnet user-secrets set "KeyVaultConfig:ClientSecretId" ""
+dotnet user-secrets list
+dotnet user-secrets remove "AuthorApiKey"
 
 
 
