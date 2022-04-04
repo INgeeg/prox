@@ -47,7 +47,8 @@ dotnet add package Azure.Security.KeyVault.Secrets
 
 
 
-
+---Polly
+dotnet add package Polly
 
 
 

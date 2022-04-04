@@ -1,8 +1,11 @@
 using Microsoft.Extensions.Options;
+using Polly;
+
 internal static class Api{
     public static void ConfigureApi(this WebApplication app){
         app.MapGet("/Users", GetUsers);
         app.MapGet("/Settings", GetSettings);
+        app.MapGet("/Error", Error);
     }
 
     private static async Task<IResult> GetUsers(IUserData data){
@@ -19,6 +22,10 @@ internal static class Api{
 
         
     }
+    
+    private static async Task<IResult> Error(){
+            return Results.Problem();
+    }
 
     private static IResult GetSettings(
         IConfiguration config,
@@ -29,7 +36,13 @@ internal static class Api{
 
         try
         {
-           return Results.Ok(new {
+            var retryPolicy = Policy.Handle<Exception>()
+                .RetryAsync(2, async (ex, count, context) =>
+                {
+                    //(config as IConfigurationRoot).Reload();
+                });
+
+            return Results.Ok(new {
                config = config.GetValue<string>("ExampleSetting:One"),
                optionValueSingleton = options.Value.One,
                optionMonitorTransient = optionsMonitor.CurrentValue.One,

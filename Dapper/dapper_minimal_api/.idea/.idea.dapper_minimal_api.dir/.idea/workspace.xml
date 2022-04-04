@@ -11,6 +11,11 @@
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
+  <component name="HighlightingSettingsPerFile">
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/269afe675db877eae2964ba601b6cf9d668bc40eec95cab05eadd5dd7a66b8/KeyVaultSecretManager.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/62ed2e09eea11772f576931a3f8f1f2e45a5d41044fcb9ead0bb1f5764/AzureKeyVaultConfigurationOptions.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///Dummy.cs" root0="SKIP_HIGHLIGHTING" />
+  </component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
   </component>
@@ -68,7 +73,7 @@
       <updated>1648782865755</updated>
       <workItem from="1648782880002" duration="362000" />
       <workItem from="1648823809790" duration="980000" />
-      <workItem from="1648839263472" duration="3442000" />
+      <workItem from="1648839263472" duration="7534000" />
     </task>
     <servers />
   </component>
@@ -85,52 +90,52 @@
       <breakpoints>
         <line-breakpoint enabled="true" type="DotNet Breakpoints">
           <url>file://$PROJECT_DIR$/Api.cs</url>
-          <line>8</line>
+          <line>11</line>
           <properties documentPath="$PROJECT_DIR$/Api.cs" initialLine="8" containingFunctionPresentation="method 'GetUsers'">
             <startOffsets>
-              <option value="291" />
+              <option value="342" />
             </startOffsets>
             <endOffsets>
-              <option value="478" />
+              <option value="529" />
             </endOffsets>
           </properties>
           <option name="timeStamp" value="1" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="DotNet Breakpoints">
           <url>file://$PROJECT_DIR$/Api.cs</url>
-          <line>27</line>
+          <line>34</line>
           <properties documentPath="$PROJECT_DIR$/Api.cs" initialLine="27" containingFunctionPresentation="method 'GetSettings'">
             <startOffsets>
-              <option value="731" />
+              <option value="879" />
             </startOffsets>
             <endOffsets>
-              <option value="732" />
+              <option value="880" />
             </endOffsets>
           </properties>
           <option name="timeStamp" value="2" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="DotNet Breakpoints">
           <url>file://$PROJECT_DIR$/Api.cs</url>
-          <line>31</line>
+          <line>44</line>
           <properties documentPath="$PROJECT_DIR$/Api.cs" initialLine="31" containingFunctionPresentation="method 'GetSettings'">
             <startOffsets>
-              <option value="767" />
+              <option value="1136" />
             </startOffsets>
             <endOffsets>
-              <option value="1164" />
+              <option value="1533" />
             </endOffsets>
           </properties>
           <option name="timeStamp" value="4" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="DotNet Breakpoints">
           <url>file://$PROJECT_DIR$/Api.cs</url>
-          <line>29</line>
+          <line>36</line>
           <properties documentPath="$PROJECT_DIR$/Api.cs" initialLine="29" containingFunctionPresentation="method 'GetSettings'">
             <startOffsets>
-              <option value="742" />
+              <option value="890" />
             </startOffsets>
             <endOffsets>
-              <option value="1285" />
+              <option value="1654" />
             </endOffsets>
           </properties>
           <option name="timeStamp" value="5" />
@@ -147,6 +152,14 @@
             </endOffsets>
           </properties>
           <option name="timeStamp" value="6" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="DotNet Breakpoints">
+          <url>mock:///Dummy.cs</url>
+          <line>16</line>
+          <properties documentPath="/Dummy.cs" initialLine="16" isMultiMethodBreakpoint="true">
+            <option name="multiMethodBreakpoint" value="true" />
+          </properties>
+          <option name="timeStamp" value="7" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

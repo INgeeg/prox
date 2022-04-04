@@ -12,7 +12,10 @@ builder.Configuration.AddJsonFile($"config/appsettings.{builder.Environment.Envi
     reloadOnChange: true);
 var cred = new ClientSecretCredential(builder.Configuration["KeyVaultConfig:TenantId"], builder.Configuration["KeyVaultConfig:ClientId"], builder.Configuration["KeyVaultConfig:ClientSecretId"]);
 var client = new SecretClient(new Uri(builder.Configuration["KeyVaultConfig:KVUrl"]), cred);
-builder.Configuration.AddAzureKeyVault(client, new AzureKeyVaultConfigurationOptions());
+builder.Configuration.AddAzureKeyVault(client, new AzureKeyVaultConfigurationOptions()
+{
+    ReloadInterval = TimeSpan.FromMinutes(10)
+});
 
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
@@ -24,9 +27,12 @@ builder.Services.Configure<ExampleSettings>(builder.Configuration.GetSection("Ex
 var app = builder.Build();
 
 if(app.Environment.IsDevelopment()){
-    app.UseSwagger();
-    app.UseSwaggerUI();
+    //app.UseSwagger();
+    //app.UseSwaggerUI();
 }
+app.UseExceptionHandler("/Error");
+app.UseSwagger();
+app.UseSwaggerUI();
 //app.UseHttpsRedirection();
 app.ConfigureApi();
 
