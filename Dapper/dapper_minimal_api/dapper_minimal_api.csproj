@@ -29,4 +29,8 @@
     <Content Remove="appsettings.json" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Dapper" />
+  </ItemGroup>
+
 </Project>
