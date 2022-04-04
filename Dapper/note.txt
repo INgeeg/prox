@@ -38,11 +38,34 @@ az group create --name "myKVaultResourceGroup" -l "CentralUS"
 az keyvault create --name "my-key-vault-store" --resource-group "myKVaultResourceGroup" --location "CentralUS"
 az keyvault secret set --vault-name "my-key-vault-store" --name "ExamplePassword" --value "hVFkk965BuUv"
 az keyvault secret set --vault-name "my-key-vault-store" --name "ExampleSetting--Two" --value "somesecrte value"
-
+az keyvault secret show --name "ExampleSetting--Two" --vault-name "my-key-vault-store" --query "value"
 
 dotnet add package Azure.Extensions.AspNetCore.Configuration.Secrets
 dotnet add package Azure.Identity
 dotnet add package Azure.Security.KeyVault.Secrets
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+--deploy on defferent namespace
+kubectl create namespace meniki
+kubectl -n meniki apply -f deploy.yaml
+kubectl get deploy -n meniki
+kubectl -n meniki get pods
+
+
 
 
 

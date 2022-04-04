@@ -5,6 +5,7 @@ using Dapper.DbAccess;
 
 
 var builder = WebApplication.CreateBuilder(args);
+
 builder.Configuration.AddJsonFile("config/appsettings.json", optional: false, reloadOnChange: true);
 builder.Configuration.AddJsonFile($"config/appsettings.{builder.Environment.EnvironmentName}.json", 
     optional: false,
@@ -12,6 +13,7 @@ builder.Configuration.AddJsonFile($"config/appsettings.{builder.Environment.Envi
 var cred = new ClientSecretCredential(builder.Configuration["KeyVaultConfig:TenantId"], builder.Configuration["KeyVaultConfig:ClientId"], builder.Configuration["KeyVaultConfig:ClientSecretId"]);
 var client = new SecretClient(new Uri(builder.Configuration["KeyVaultConfig:KVUrl"]), cred);
 builder.Configuration.AddAzureKeyVault(client, new AzureKeyVaultConfigurationOptions());
+
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 builder.Services.AddSingleton<ISqlDataAccess, SqlDataAccess>();
