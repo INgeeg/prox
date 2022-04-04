@@ -7,6 +7,9 @@ using GraphQL.Data;
 using GraphQL.GraphQL;
 using GraphQL.GraphQL.DataItem;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Options;
+using Mongo.Models;
+using Mongo.Services;
 using L = GraphQL.GraphQL.Lists;
 
 
@@ -37,9 +40,18 @@ builder.Services.AddPooledDbContextFactory<ApiDbContext>(options =>
     ));
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
+builder.Services.AddControllers();
+
 builder.Services.AddSingleton<ISqlDataAccess, SqlDataAccess>();
 builder.Services.AddSingleton<IUserData, UserData>();
 builder.Services.Configure<ExampleSettings>(builder.Configuration.GetSection("ExampleSetting")); 
+builder.Services.Configure<DatabaseSettings>(builder.Configuration.GetSection(nameof(DatabaseSettings)));
+//builder.Services.AddSingleton<IDatabaseSettings>(sp => sp.GetRequiredService<IOptions<DatabaseSettings>>().Value);
+
+
+builder.Services.AddSingleton<MongoService>();
+
+builder.Services.AddScoped<IProductService, ProductService>();
 
 
 var app = builder.Build();
@@ -57,6 +69,7 @@ app.UseRouting();
 app.UseEndpoints(endpoints =>
 {
     endpoints.MapGraphQL();
+    endpoints.MapControllers();
 });
 
 app.Run();

@@ -4,6 +4,7 @@ https://docs.microsoft.com/en-us/azure/cosmos-db/mongodb/create-mongodb-dotnet
 ///////this is in solution////cosmosmongo-webapi
 dotnet new -i Microsoft.Azure.Cosmos.Templates                      #install Templates
 dotnet new cosmosmongo-webapi -o cosmosmongo-webapi
+dotnet add package MongoDB.Driver
 --add cosmosdb connection string
 --loaddata to cosmos db ny using mongoimport(from link above)
 dotnet run

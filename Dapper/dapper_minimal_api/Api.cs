@@ -1,11 +1,15 @@
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Options;
+using Mongo.Models;
+using Mongo.Services;
 using Polly;
 
 internal static class Api{
     public static void ConfigureApi(this WebApplication app){
-        app.MapGet("/Users", GetUsers);
-        app.MapGet("/Settings", GetSettings);
+        app.MapGet("/DapperUsers", GetUsers);
+        app.MapGet("/ConfigSettings", GetSettings);
         app.MapGet("/Error", Error);
+
     }
 
     private static async Task<IResult> GetUsers(IUserData data){
@@ -19,19 +23,21 @@ internal static class Api{
             return Results.Problem(ex.Message);
         }
 
-
-        
     }
     
     private static async Task<IResult> Error(){
             return Results.Problem();
     }
+  
+    
+    
 
     private static IResult GetSettings(
         IConfiguration config,
         IOptions<ExampleSettings> options,
         IOptionsMonitor<ExampleSettings> optionsMonitor,
         IOptionsSnapshot<ExampleSettings> optionsSnapshot
+        ,IOptions<DatabaseSettings> dboptions
     ){
 
         try
@@ -47,8 +53,8 @@ internal static class Api{
                optionValueSingleton = options.Value.One,
                optionMonitorTransient = optionsMonitor.CurrentValue.One,
                optionSnapshotScoped = optionsSnapshot.Value.One,               
-               optionMonitorTransientTwo = optionsMonitor.CurrentValue.Two,
-
+               optionMonitorTransientTwo = optionsMonitor.CurrentValue.Two
+               ,dbSettingoptions = dboptions.Value.MongoConnectionString
 
            }); 
         }
