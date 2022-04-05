@@ -74,6 +74,12 @@ kubectl -n meniki get pods
 
 
 
+--serilog
+dotnet add package Serilog.AspNetCore
+dotnet add package SerilogTimings
+dotnet add package Serilog.Sinks.Seq
+docker run --name seq -d --restart unless-stopped -e ACCEPT_EULA=Y -p 5341:80 datalust/seq:latest     #just run locally to monitor logs
+
 
 
 
