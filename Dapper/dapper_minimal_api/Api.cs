@@ -3,13 +3,21 @@ using Microsoft.Extensions.Options;
 using Mongo.Models;
 using Mongo.Services;
 using Polly;
+using Serilog;
 
 internal static class Api{
     public static void ConfigureApi(this WebApplication app){
         app.MapGet("/DapperUsers", GetUsers);
         app.MapGet("/ConfigSettings", GetSettings);
         app.MapGet("/Error", Error);
-
+        
+        
+        app.MapGet("/request-context", (IDiagnosticContext diagnosticContext) =>
+        {
+            // You can enrich the diagnostic context with custom properties.
+            // They will be logged with the HTTP request.
+            diagnosticContext.Set("UserId", "someone");
+        });
     }
 
     private static async Task<IResult> GetUsers(IUserData data){

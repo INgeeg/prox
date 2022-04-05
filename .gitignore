@@ -19,3 +19,5 @@ Mongo_CSharp/**/obj
 Dapper/**/obj
 Dapper/**/bin
 Dapper/dapper_minimal_api/app.db
+Dapper/dapper_minimal_api/.idea
+Dapper/dapper_minimal_api/Logs
