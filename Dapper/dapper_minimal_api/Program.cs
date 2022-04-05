@@ -22,9 +22,7 @@ builder.Configuration.AddJsonFile($"config/appsettings.{builder.Environment.Envi
 var cred = new ClientSecretCredential(builder.Configuration["KeyVaultConfig:TenantId"], builder.Configuration["KeyVaultConfig:ClientId"], builder.Configuration["KeyVaultConfig:ClientSecretId"]);
 var client = new SecretClient(new Uri(builder.Configuration["KeyVaultConfig:KVUrl"]), cred);
 builder.Configuration.AddAzureKeyVault(client, new AzureKeyVaultConfigurationOptions()
-{
-    ReloadInterval = TimeSpan.FromMinutes(10)
-});
+{  ReloadInterval = TimeSpan.FromMinutes(10) });
 
 builder.Services.AddGraphQLServer()
     .AddQueryType<Query>()
