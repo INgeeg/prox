@@ -14,7 +14,7 @@ kubectl apply -f deployment.yaml
 kubectl create -f deployment.yaml
 kubectl delete -f deployment.yaml
 kubectl get pod
-kubectl exec -it dotnet-app-6b876b86b-6qs4j -- /bin/sh          #published content in /app folder
+kubectl exec -it dotnet-app-9cfff69d5-4445t -- /bin/sh          #published content in /app folder
 kubectl apply -f secret-file.yaml
 kubectl apply -f config-file.yaml
 kubectl get secrets
@@ -23,7 +23,7 @@ kubectl logs dotnet-app-7794ffbccd-dltt6                #optional
 
 kubectl apply -f service.yaml                   #this is service but the type is NodePort, here pod port and service port must be 80 so that Node port can reach them 
 ..and http://localhost:31000/settings
-kubectl exec -it dotnet-app-dd44dd6f-j8dv6 -- /bin/sh
+kubectl exec -it dotnet-app-5bb74f959c-7kjdr -- /bin/sh
 
 
 
@@ -66,7 +66,9 @@ dotnet user-secrets remove "AuthorApiKey"
 
 --deploy on defferent namespace
 kubectl create namespace meniki
-kubectl -n meniki apply -f deploy.yaml
+kubectl -n meniki apply -f deployment.yaml
+kubectl -n meniki apply -f config-file.yaml
+kubectl -n meniki apply -f service.yaml
 kubectl get deploy -n meniki
 kubectl -n meniki get pods
 
