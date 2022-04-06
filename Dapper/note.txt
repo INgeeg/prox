@@ -83,6 +83,22 @@ docker run --name seq -d --restart unless-stopped -e ACCEPT_EULA=Y -p 5341:80 da
 
 
 
+--cert manager
+curl -LO https://github.com/cert-manager/cert-manager/releases/download/v1.8.0/cert-manager.yaml
+kubectl create ns cert-manager
+kubectl apply --validate=false -f cert-manager-1.8.0.yaml
+kubectl -n cert-manager get all
+
+--test selfsigned cert
+kubectl create ns cert-manager-test
+kubectl apply -f issuer.yaml                            #will create issuer in namespace
+kubectl apply -f certificate.yaml                            #cert manager will create certificate request to LetsEncrypt and certificate will be issued
+kubectl describe certificate -n cert-manager-test           #you can see all the steps being done automatically
+kubectl get secrets -n cert-manager-test                # and you can see the certs finally
+
+
+
+
 
 
 
@@ -94,6 +110,28 @@ docker run --name seq -d --restart unless-stopped -e ACCEPT_EULA=Y -p 5341:80 da
 
 
 --SOME DRAFTS
+tree cluster-state
+kubectl cluster-info dump --all-namespaces --output-directory=cluster-state --output=json
+jq '.items[]?.status.containerStatuses[]?.image' cluster-state/kube-system/pods.json                                            #Show me all the container images names in the kube-system namespace.
+jq '.items[]?.status.containerStatuses[]? | [.image, .state[]?.startedAt]' cluster-state/default/pods.json                  #Show me when all the container images were started in the default namespace.
+kubectl describe pods
+
+POD=$(kubectl get pod  -o jsonpath="{.items[0].metadata.name}")   #getname of first pod
+kubectl exec $POD -- cat entrypoint.sh                  #Inspect the script contents inside the container file system
+
+kubectl exec $POD -- uptime
+kubectl exec $POD -- ps
+kubectl exec $POD -- stat -f /
+kubectl exec $POD --container random-logger -- lsof
+kubectl exec $POD --container random-logger -- iostat
+kubectl exec $POD --container random-logger -- ls -a -l                 #specific container
+
+--services are only accessable inside the cluster by eg pods, so inorder to easily ping test the container you build another pod with tooling like curl and ping your actual container with that curl
+kubectl run curler --image=radial/busyboxplus:curl --command -- sleep 3600    # spin up the curl
+kubectl exec -it curler -- curl http://webapp1-svc                              #access one of service dns which is bunded to container 
+
+watch kubectl get deployments,pods,services
+
 
 kubectl expose deployment dotnet-app --type=NodePort --name=dotnet-svc
 kubectl get svc
