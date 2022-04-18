@@ -15,7 +15,7 @@ data:
         "Default" : "Data Source=app.db; Cache=Shared"
       },
       "ExampleSetting":{
-        "One":"from COnfigMap2222222Secondary333333333",
+        "One":"most recent value from config map",
         "Two":"two"
       },
       "AllowedHosts": "*"
@@ -32,7 +32,7 @@ data:
         "Default" : "Data Source=app.db; Cache=Shared"
       },
       "ExampleSetting":{
-        "One":"from COnfigMap2222222Main",
+        "One":"most recent value from config map",
         "Two":"two"
       },
       "KeyVaultConfig": {

@@ -23,7 +23,7 @@ kubectl logs dotnet-app-7794ffbccd-dltt6                #optional
 
 kubectl apply -f service.yaml                   #this is service but the type is NodePort, here pod port and service port must be 80 so that Node port can reach them 
 ..and http://localhost:31000/settings
-kubectl exec -it dotnet-app-5bb74f959c-7kjdr -- /bin/sh
+kubectl exec -it dotnet-app-5dc7d8dbfc-9b95k -- /bin/sh
 
 
 

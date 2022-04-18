@@ -28,14 +28,18 @@ builder.Host.UseSerilog((context,services,configuration) => configuration
     .ReadFrom.Configuration(context.Configuration)
     .ReadFrom.Services(services)
     .Enrich.FromLogContext());
+
 builder.Configuration.AddJsonFile("config/appsettings.json", optional: false, reloadOnChange: true);
 builder.Configuration.AddJsonFile($"config/appsettings.{builder.Environment.EnvironmentName}.json", 
     optional: false,
     reloadOnChange: true);
+
+
 var cred = new ClientSecretCredential(builder.Configuration["KeyVaultConfig:TenantId"], builder.Configuration["KeyVaultConfig:ClientId"], builder.Configuration["KeyVaultConfig:ClientSecretId"]);
 var client = new SecretClient(new Uri(builder.Configuration["KeyVaultConfig:KVUrl"]), cred);
 builder.Configuration.AddAzureKeyVault(client, new AzureKeyVaultConfigurationOptions()
 {  ReloadInterval = TimeSpan.FromMinutes(10) });
+
 
 builder.Services.AddGraphQLServer()
     .AddQueryType<Query>()

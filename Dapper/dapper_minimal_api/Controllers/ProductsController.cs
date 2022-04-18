@@ -1,6 +1,7 @@
 ﻿using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using System.Collections.Generic;
+using Microsoft.Extensions.Options;
 using Mongo.Models;
 using Mongo.Services;
 
@@ -12,10 +13,23 @@ namespace Mongo.Controllers
     {
 
         private readonly IProductService _productService;
+        private readonly IOptionsMonitor<ExampleSettings> _optionsMonitor;
 
-        public ProductsController(IProductService products)
+        public ProductsController(
+            IProductService products,
+            IOptionsMonitor<ExampleSettings> optionsMonitor)
         {
             _productService = products;
+            _optionsMonitor = optionsMonitor;
+
+        }
+
+        [HttpGet("settingsnew")]
+        public async Task<object> GetSettings2()
+        {
+            return Results.Ok(new {
+               optionMonitorTransient = _optionsMonitor.CurrentValue.One
+           });
         }
 
         [HttpGet]

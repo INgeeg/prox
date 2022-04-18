@@ -16,7 +16,7 @@ spec:
     spec:
       containers:
       - name: dotnet-app
-        image: tonydoker/dapper:1.12
+        image: tonydoker/dapper:1.14
         ports:
         - containerPort: 80
         volumeMounts:

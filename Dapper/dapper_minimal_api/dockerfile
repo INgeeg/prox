@@ -18,6 +18,7 @@ ENTRYPOINT [ "dotnet", "dapper_minimal_api.dll" ]
 #http://localhost:8000/settings
 #docker login
 
-#docker build -t dapper:1.12 .
-#docker tag 0b82cbac03cb tonydoker/dapper:1.12
-#docker push tonydoker/dapper:1.12
+#docker build -t dapper:1.14 .
+#docker images
+#docker tag 7e231c3a1b25 tonydoker/dapper:1.14
+#docker push tonydoker/dapper:1.14
