@@ -29,8 +29,8 @@ builder.Host.UseSerilog((context,services,configuration) => configuration
     .ReadFrom.Services(services)
     .Enrich.FromLogContext());
 
-builder.Configuration.AddJsonFile("config/appsettings.json", optional: false, reloadOnChange: true);
-builder.Configuration.AddJsonFile($"config/appsettings.{builder.Environment.EnvironmentName}.json", 
+builder.Configuration.AddJsonFile(ConfigMapFileProvider.FromRelativePath("config"), "appsettings.json", optional: false, reloadOnChange: true);
+builder.Configuration.AddJsonFile(ConfigMapFileProvider.FromRelativePath("config"), $"appsettings.{builder.Environment.EnvironmentName}.json", 
     optional: false,
     reloadOnChange: true);
 
