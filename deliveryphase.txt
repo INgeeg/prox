@@ -1,0 +1,20 @@
+--enable autocomplete for kube and also create aliase
+echo "source <(kubectl completion bash)" >> ~/.bashrc
+alias k="kubectl"
+complete -F __start_kubectl k
+
+
+# Docker PS Prettify Function
+function dock() {
+  if [[ "$@" == "ps" ]]; then
+    command docker ps --format 'table {{.Names}}\t{{.Status}} : {{.RunningFor}}\t{{.ID}}\t{{.Image}}'
+  elif [[ "$@" == "psa" ]]; then
+    # docker ps -a includes all containers
+    command docker ps -a --format 'table {{.Names}}\t{{.Status}}\t{{.Size}}\n{{.ID}}\t{{.Image}}{{if .Ports}}{{with $p := split .Ports ", "}}\t{{len $p>
+  elif [[ "$@" == "psnet" ]]; then
+    # docker ps with network information
+    command docker ps -a --format 'table {{.Names}}\t{{.Status}}\t{{.Networks}}\n{{.ID}}{{if .Ports}}{{with $p := split .Ports ", "}}{{range $p}}\t\t{{>
+  else
+    command docker "$@"
+  fi
+}
