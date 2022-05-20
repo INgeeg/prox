@@ -10,7 +10,7 @@ namespace ApacheKafkaProducerDemo.Controllers;
 [ApiController]
 public class ProducerController: ControllerBase {
     private readonly string bootstrapServers = "localhost:9092";
-    private readonly string topic = "test1";
+    private readonly string topic = "demotopic";
 
     [HttpPost]
     public async Task <IActionResult> Post([FromBody] OrderRequest orderRequest) {

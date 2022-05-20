@@ -79,7 +79,7 @@ namespace ApacheKafkaConsumerDemo
 
     public Task StartAsync(CancellationToken cancellationToken)
     {
-        _cluster.ConsumeFromLatest("test1");
+        _cluster.ConsumeFromLatest("demotopic");
         _cluster.MessageReceived += record =>
         {
             _logger.LogInformation($"Received: {Encoding.UTF8.GetString(record.Value as byte[])}");
