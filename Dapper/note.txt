@@ -24,7 +24,8 @@ kubectl logs dotnet-app-7794ffbccd-dltt6                #optional
 kubectl apply -f service.yaml                   #this is service but the type is NodePort, here pod port and service port must be 80 so that Node port can reach them 
 ..and http://localhost:31000/settings
 kubectl exec -it dotnet-app2-686fc8794c-22gps -- /bin/sh
-
+kubectl run mycurlpod --image=curlimages/curl -i --tty -- sh
+kubectl exec -it mycurlpod -- sh
 
 
 

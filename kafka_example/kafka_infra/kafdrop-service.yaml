@@ -13,8 +13,8 @@ spec:
   ports:
     - nodePort: 31002
     # - name: "9000"
-      port: 80
-      targetPort: 9000
+      port: 9000
+      targetPort: 80
   selector:
     io.kompose.service: kafdrop
 status:
