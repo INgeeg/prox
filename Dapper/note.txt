@@ -21,11 +21,15 @@ kubectl get secrets
 kubectl get configmap
 kubectl logs dotnet-app-7794ffbccd-dltt6                #optional
 
+$ kubectl logs $(kubectl get pod -l app=kafka-consumer -o name) -f
+
+
 kubectl apply -f service.yaml                   #this is service but the type is NodePort, here pod port and service port must be 80 so that Node port can reach them 
 ..and http://localhost:31000/settings
 kubectl exec -it dotnet-app2-686fc8794c-22gps -- /bin/sh
 kubectl run mycurlpod --image=curlimages/curl -i --tty -- sh
 kubectl exec -it mycurlpod -- sh
+kubectl exec -it busybox -- sh
 
 
 
