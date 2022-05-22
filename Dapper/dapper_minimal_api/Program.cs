@@ -35,10 +35,10 @@ builder.Configuration.AddJsonFile(ConfigMapFileProvider.FromRelativePath("config
     reloadOnChange: true);
 
 
-var cred = new ClientSecretCredential(builder.Configuration["KeyVaultConfig:TenantId"], builder.Configuration["KeyVaultConfig:ClientId"], builder.Configuration["KeyVaultConfig:ClientSecretId"]);
-var client = new SecretClient(new Uri(builder.Configuration["KeyVaultConfig:KVUrl"]), cred);
-builder.Configuration.AddAzureKeyVault(client, new AzureKeyVaultConfigurationOptions()
-{  ReloadInterval = TimeSpan.FromMinutes(10) });
+// var cred = new ClientSecretCredential(builder.Configuration["KeyVaultConfig:TenantId"], builder.Configuration["KeyVaultConfig:ClientId"], builder.Configuration["KeyVaultConfig:ClientSecretId"]);
+// var client = new SecretClient(new Uri(builder.Configuration["KeyVaultConfig:KVUrl"]), cred);
+// builder.Configuration.AddAzureKeyVault(client, new AzureKeyVaultConfigurationOptions()
+// {  ReloadInterval = TimeSpan.FromMinutes(10) });
 
 
 builder.Services.AddGraphQLServer()

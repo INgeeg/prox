@@ -17,8 +17,9 @@ spec:
       containers:
       - name: dotnet-app
         image: tonydoker/dapper:1.14
+        imagePullPolicy: "Always"
         ports:
-        - containerPort: 80
+        - containerPort: 81
         volumeMounts:
         - name: dotnet-config
           mountPath: /app/config

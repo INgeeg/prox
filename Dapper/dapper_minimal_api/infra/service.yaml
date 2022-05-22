@@ -9,6 +9,6 @@ spec:
   selector:
     app: dotnet-app
   ports:
-    - nodePort: 31000
-      port: 80
+    - nodePort: 31022
+      port: 81
       targetPort: 80
