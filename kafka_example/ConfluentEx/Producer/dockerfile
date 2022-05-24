@@ -1,24 +1,22 @@
 FROM mcr.microsoft.com/dotnet/sdk:6.0 AS build
 WORKDIR /src
-COPY dapper_minimal_api.csproj .
-RUN dotnet restore "dapper_minimal_api.csproj"
+COPY Producer.csproj .
+RUN dotnet restore "Producer.csproj"
 COPY . .
-RUN dotnet publish "dapper_minimal_api.csproj" -c Release -o /publish
-COPY app.db /publish/
+RUN dotnet publish "Producer.csproj" -c Release -o /publish
+COPY getting-started.properties /publish/
 
 FROM mcr.microsoft.com/dotnet/aspnet:6.0 as final
 WORKDIR /app
 COPY --from=build /publish .
 
-ENTRYPOINT [ "dotnet", "dapper_minimal_api.dll" ]
+#ENTRYPOINT [ "dotnet", "Producer.dll", "getting-started.properties"]
 
+#dotnet Producer.dll getting-started.properties
 
-#docker images | grep dapper
-#docker run --rm -it -p 8000:80 --env-file .env dapper:1.10
-#http://localhost:8000/settings
+#docker run -it producer:1.2
 #docker login
 
-#docker build -t dapper:1.14 .
-#docker images
-#docker tag 7e231c3a1b25 tonydoker/dapper:1.14
-#docker push tonydoker/dapper:1.14
+#docker build -t producer:1.2 .
+#docker tag $(docker images --quiet producer) tonydoker/producer:1.2
+#docker push tonydoker/producer:1.2

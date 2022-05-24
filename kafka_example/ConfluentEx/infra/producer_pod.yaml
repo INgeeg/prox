@@ -1,14 +1,11 @@
 apiVersion: v1
 kind: Pod
 metadata:
-  name: busybox
+  name: producer
   namespace: default
 spec:
   containers:
-  - image: busybox
-    command:
-      - sleep
-      - "3600"
-    imagePullPolicy: IfNotPresent
-    name: busybox
+  - image: tonydoker/producer:1.2
+    imagePullPolicy: "Always"
+    name: producer
   restartPolicy: Always
