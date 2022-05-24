@@ -15,10 +15,10 @@ class Consumer {
             .AddIniFile(args[0])
             .Build();
 
-        configuration["group.id"] = "kafka-dotnet-getting-started";
+        //configuration["group.id"] = "kafka-dotnet-getting-started";
         configuration["auto.offset.reset"] = "earliest";
 
-        const string topic = "purchases";
+        const string topic = "test_topic";
 
         CancellationTokenSource cts = new CancellationTokenSource();
         Console.CancelKeyPress += (_, e) => {

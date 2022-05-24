@@ -13,7 +13,7 @@ class Producer {
             .AddIniFile(args[0])
             .Build();
 
-        const string topic = "purchases";
+        const string topic = "test_topic";
 
         string[] users = { "eabara", "jsmith", "sgarcia", "jbernard", "htanaka", "awalther" };
         string[] items = { "book", "alarm clock", "t-shirts", "gift card", "batteries" };
@@ -22,7 +22,7 @@ class Producer {
             configuration.AsEnumerable()).Build())
         {
             var numProduced = 0;
-            const int numMessages = 10;
+            const int numMessages = 11;
             for (int i = 0; i < numMessages; ++i)
             {
                 Random rnd = new Random();

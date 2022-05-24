@@ -11,7 +11,7 @@
 // WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 // See the License for the specific language governing permissions and
 // limitations under the License.
-
+/*
 using Confluent.Kafka;
 using Confluent.Kafka.Admin;
 using Newtonsoft.Json;
@@ -26,7 +26,7 @@ using System.Threading.Tasks;
 
 namespace CCloud
 {
-    class Program
+    class Program1
     {
         static async Task<ClientConfig> LoadConfig(string configPath, string certDir)
         {
@@ -155,7 +155,7 @@ namespace CCloud
             System.Environment.Exit(1);
         }
 
-        static async Task Main(string[] args)
+        static async Task Main1(string[] args)
         {
             if (args.Length != 3 && args.Length != 4) { PrintUsage(); }
             
@@ -182,3 +182,4 @@ namespace CCloud
         }
     }
 }
+*/
