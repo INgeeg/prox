@@ -4,7 +4,6 @@ using System.Threading;
 using Microsoft.Extensions.Configuration;
 
 class Consumer {
-
     static void Main(string[] args)
     {
         if (args.Length != 1) {
