@@ -15,7 +15,7 @@ class Consumer {
             .Build();
 
         //configuration["group.id"] = "kafka-dotnet-getting-started";
-        configuration["auto.offset.reset"] = "earliest";
+        //configuration["auto.offset.reset"] = "earliest";
 
         const string topic = "test_topic";
 
