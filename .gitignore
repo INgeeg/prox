@@ -24,3 +24,4 @@ Dapper/dapper_minimal_api/Logs
 kafka_example/**/bin
 kafka_example/**/obj
 kafka_example/**/*.properties
+kafka_example/**/**/appsettings.json

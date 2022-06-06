@@ -13,3 +13,49 @@ kubectl exec -it producer -- sh
 
 
 dotnet add package Microsoft.Azure.Data.SchemaRegistry.ApacheAvro
+dotnet add package Confluent.SchemaRegistry.Serdes.Avro
+dotnet tool install --global Apache.Avro.Tools
+avrogen -s User.avsc .
+dotnet avro generate --registry-config schema.registry.basic.auth.user.info=OTGUTBCNWHDIGV45:mKMsb7UhFA+g+SCxz82iminAsQ9MHH0a3ArI4NmPjHrnU2QbVeb6/vgG2S30WN60 --id 100001 --registry-url https://psrc-kg7rp.westus2.azure.confluent.cloud
+dotnet add package Azure.Storage.Blobs
+
+
+
+
+
+
+
+
+
+
+
+Finish Getting Started with Schema Registry
+Produce and consume messages with schemas using the Confluent Schema Registry
+1. Log in to your cluster using the confluent login command with the cluster URL specified.
+confluent login
+
+Copy
+2. Set the Confluent Cloud environment and cluster
+confluent environment use env-k88n52
+
+Copy
+confluent kafka cluster use lkc-xqx76z
+
+Copy
+3. If you don't have a Kafka API key, generate one and set it to use (replacing <API_KEY> with generated key) from the CLI
+confluent api-key create --resource lkc-xqx76z
+
+Copy
+confluent api-key use <API_KEY> --resource lkc-xqx76z
+
+Copy
+4. Produce a message using your schema (replace <PATH_TO_SCHEMA_FILE> with your local path to the schema file)
+confluent kafka topic produce test_topic_scm --value-format avro --schema <PATH_TO_SCHEMA_FILE>
+
+Copy
+Enter the Schema Registry API key and secret created previously. Then, produce a message formatted accordingly to the schema created for the topic "test_topic_scm".
+{"orderId":2122453, "orderTime": 1607641868, "orderAddress":"899 W Evelyn Ave, Mountain View, CA 94041"}
+
+Copy
+5. Consume the message you just produced by retrieving the schema from the Schema Registry (ctrl+C to stop the produce command from previous step or open a new terminal)
+confluent kafka topic consume test_topic_scm --value-format avro --from-beginning

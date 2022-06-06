@@ -1,0 +1,19 @@
+{
+  "namespace": "Microsoft.Azure.Data.SchemaRegistry.example",
+  "type": "record",
+  "name": "Order",
+  "fields": [
+    {
+      "name": "id",
+      "type": "string"
+    },
+    {
+      "name": "amount",
+      "type": "double"
+    },
+    {
+      "name": "description",
+      "type": "string"
+    }
+  ]
+} 
