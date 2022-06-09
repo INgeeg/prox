@@ -1,4 +1,16 @@
 ﻿<wpf:ResourceDictionary xml:space="preserve" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:s="clr-namespace:System;assembly=mscorlib" xmlns:ss="urn:shemas-jetbrains-com:settings-storage-xaml" xmlns:wpf="http://schemas.microsoft.com/winfx/2006/xaml/presentation">
 	<s:String x:Key="/Default/Environment/AssemblyExplorer/XmlDocument/@EntryValue">&lt;AssemblyExplorer&gt;
   &lt;Assembly Path="/Users/alisher/Documents/git/prox/kafka_example/ConfluentEx/Producer/bin/Debug/net6.0/Microsoft.Azure.Data.SchemaRegistry.ApacheAvro.dll" /&gt;
-&lt;/AssemblyExplorer&gt;</s:String></wpf:ResourceDictionary>
+&lt;/AssemblyExplorer&gt;</s:String>
+	<s:String x:Key="/Default/Environment/UnitTesting/UnitTestSessionStore/Sessions/=eca16c17_002D91e5_002D42a6_002Dafd7_002D4f31ae030057/@EntryIndexedValue">&lt;SessionState ContinuousTestingMode="0" Name="Test1" xmlns="urn:schemas-jetbrains-com:jetbrains-ut-session"&gt;
+  &lt;TestAncestor&gt;
+    &lt;TestId&gt;xUnit::5629B003-C811-4B74-998D-BF5B11D709F4::net6.0::KafkaProducer.Tests.AzureKafkaProducerTests&lt;/TestId&gt;
+  &lt;/TestAncestor&gt;
+&lt;/SessionState&gt;</s:String>
+	<s:String x:Key="/Default/Environment/UnitTesting/UnitTestSessionStore/Sessions/=fe0c958a_002Da8ce_002D4b7d_002D9046_002D354d211a50ad/@EntryIndexedValue">&lt;SessionState ContinuousTestingMode="0" IsActive="True" Name="wwProduceAsync_ShouldProduceSameMessage_WhenPassingKeyAndValue" xmlns="urn:schemas-jetbrains-com:jetbrains-ut-session"&gt;
+  &lt;TestAncestor&gt;
+    &lt;TestId&gt;xUnit::5629B003-C811-4B74-998D-BF5B11D709F4::net6.0::AzureKafkaProducerTests&lt;/TestId&gt;
+    &lt;TestId&gt;xUnit::E3930D16-6A40-459A-B841-644E0C584923::net6.0::AzureKafkaConsumerTests.ConsumeAsync_ShouldLogMessages_WhenMethodExecuted&lt;/TestId&gt;
+    &lt;TestId&gt;xUnit::E3930D16-6A40-459A-B841-644E0C584923::net6.0::AzureKafkaConsumerTests.ConsumeAsync_ShouldSubscribeToTheSameTopic_WhenTopicPassedViaOptions&lt;/TestId&gt;
+  &lt;/TestAncestor&gt;
+&lt;/SessionState&gt;</s:String></wpf:ResourceDictionary>

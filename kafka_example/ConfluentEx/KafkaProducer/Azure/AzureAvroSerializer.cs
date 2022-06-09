@@ -1,7 +1,6 @@
 
 
 using System.Text;
-using Azure.Core;
 using Azure.Data.SchemaRegistry;
 using Azure.Identity;
 using Azure.Messaging.EventHubs;
@@ -26,13 +25,12 @@ public class AzureAvroSerializer<T> : IAsyncSerializer<T>
             });
     }
 
-
-    public Task<byte[]> SerializeAsync(T data, SerializationContext context)
+    public async Task<byte[]> SerializeAsync(T data, SerializationContext context)
     {
         
-        EventData eventData =  (EventData) _serializer.Serialize(data, messageType: typeof(EventData));
+        EventData eventData =   (EventData) await _serializer.SerializeAsync(data, messageType: typeof(EventData));
         context.Headers.Add("schema_id", Encoding.ASCII.GetBytes(eventData.ContentType));
         
-        return Task.FromResult(eventData.EventBody.ToArray());
+        return eventData.EventBody.ToArray();
     }
 }
