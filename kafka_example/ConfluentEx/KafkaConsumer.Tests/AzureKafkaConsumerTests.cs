@@ -2,6 +2,8 @@ using System.Threading;
 using System.Threading.Tasks;
 using AvroSpecific;
 using Confluent.Kafka;
+using KafkaConsumer.Azure;
+using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
 using Moq;
 using Xunit;
@@ -21,13 +23,16 @@ public class AzureKafkaConsumerTests
         _options = Options.Create(new AzureKafkaConfiguration());
         _mockCts = new Mock<CancellationTokenSource>();
         _mockConsumer = new Mock<IConsumer<string, User>>();
-        _logger = new Mock<ILoggerAdapter<AzureKafkaConsumer<User>>>();
-        _sut = new AzureKafkaConsumer<User>(_options, _mockConsumer.Object,_logger.Object);
+        _logger = new Mock<ILogger<AzureKafkaConsumer<User>>>();
+        _sut = new AzureKafkaEventConsumer<User>();
     }
     
     [Fact]
     public void ConsumeAsync_ShouldSubscribeToTheSameTopic_WhenTopicPassedViaOptions()
     {
+        
+        
+        
         _options.Value.TopicName = "fakeTopic";
         //_mockConsumer.Setup(x => x.Subscribe(_options.Value.TopicName)).Verifiable();
         var result = _sut.ConsumeAsync(_mockCts.Object);

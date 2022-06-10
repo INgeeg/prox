@@ -2,6 +2,7 @@ using System.Threading;
 using System.Threading.Tasks;
 using AvroSpecific;
 using Confluent.Kafka;
+using KafkaProducer.Azure;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
 using Moq;
@@ -11,19 +12,19 @@ using Xunit;
 public class AzureKafkaProducerTests
 {
     
-    private IOptions<AzureKafkaConfiguration> _options;
+    private IOptions<AzureSchemaRegistryConfiguration> _options;
     private readonly Mock<CancellationTokenSource> _mockCts;
     private readonly Mock<IProducer<string, User>> _mockProducer;
-    private readonly Mock<ILogger<AzureKafkaProducer<User>>> _logger;
-    private readonly AzureKafkaProducer<User> _sut;
+    private readonly Mock<ILogger<AzureKafkaEventProducer<,>>> _logger;
+    private readonly AzureKafkaEventProducer<,> _sut;
     
     public AzureKafkaProducerTests()
     {
-        _options = Options.Create(new AzureKafkaConfiguration());
+        _options = Options.Create(new AzureSchemaRegistryConfiguration());
         _mockCts = new Mock<CancellationTokenSource>();
         _mockProducer = new Mock<IProducer<string, User>>();
-        _logger = new Mock<ILogger<AzureKafkaProducer<User>>>();
-        _sut = new AzureKafkaProducer<User>(_options, _mockProducer.Object,_logger.Object);
+        _logger = new Mock<ILogger<AzureKafkaEventProducer<,>>>();
+        _sut = new AzureKafkaEventProducer<,>(_options, _mockProducer.Object,_logger.Object);
     }
     
     [Fact]

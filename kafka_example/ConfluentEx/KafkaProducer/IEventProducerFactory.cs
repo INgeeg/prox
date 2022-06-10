@@ -1,5 +1,5 @@
-
+namespace KafkaProducer;
 public interface IEventProducerFactory
 {
-    IEventProducer<T> CreateProducer<T>();
+    IEventProducer<TKey,TValue> CreateEventProducer<TKey,TValue>();
 }

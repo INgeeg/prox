@@ -1,5 +1,6 @@
-public interface IEventConsumer<T>
+namespace KafkaConsumer;
+public interface IEventConsumer<TValue>: IDisposable
 {
-    public IAsyncEnumerable<T> ConsumeAsync(CancellationTokenSource cancellationTokenSource);
-
+    public void Subscribe(string topic);
+    public IAsyncEnumerable<TValue> ConsumeAsync(CancellationToken cancellationToken);
 }

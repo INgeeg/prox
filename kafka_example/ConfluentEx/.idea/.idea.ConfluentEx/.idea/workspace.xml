@@ -25,28 +25,7 @@
     <setting file="mock:///Dummy.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="mock:///Dummy.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="mock:///Dummy.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock:///Dummy.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock:///Dummy.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock:///Dummy.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock:///Dummy.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock:///Dummy.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock:///Dummy.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock:///Dummy.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock:///Dummy.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock:///Dummy.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock:///Dummy.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock:///Dummy.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock:///Dummy.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock:///Dummy.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock:///Dummy.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock:///Dummy.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock:///Dummy.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock:///Dummy.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock:///Dummy.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock:///Dummy.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock:///Dummy.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/../../../catalyst-service-dotnetcore-starter-master/src/Payment.Api/Program.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/KafkaConsumer/Azure/AzureKafkaConsumer.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/KafkaConsumer/obj/Debug/net6.0/KafkaConsumer.AssemblyInfo.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/b2a7bd2c3c4443b59303006c88fdcdd23e200/17/f7141410/IDeserializer`1.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/b2a7bd2c3c4443b59303006c88fdcdd23e200/1d/ebd92893/ProducerBuilder`2.cs" root0="SKIP_HIGHLIGHTING" />
@@ -80,6 +59,7 @@
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/9156f7f7d7fe31ecb86103c74e89e22a5242a153d4ccf14e354685cb3fb7b5/Task.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/aa2e741c1b6b87e0f329e1b0e0606663df6de87a1f2a97d36dbe03888fcb7/RuntimeType.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/b780d9ef634df8733117ee737a8a38a2bb7da585e06e1f7e51cef6eb34211d6c/Mock`1.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/bcae882191178c8bf44c9add4cdeffa874a7afe629e3e56e9280f5896e953425/Monitor.CoreCLR.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/beb9de248d23e38ea4ff4d1233bf5681324b6caac12b72d62457917392f3/Future.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/bebd253e21dcf766929bfdfd74615bfe46e6e1693b289273dbdb82152893/ExceptionDispatchInfo.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/bebfde917972e7a5b735019951b94ebede135a699b1024dfffaf7bf98bb3f/ConstructorInfo.cs" root0="SKIP_HIGHLIGHTING" />
@@ -114,7 +94,7 @@
     &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
 }</component>
-  <component name="RunManager" selected=".NET Project.KafkaProducer">
+  <component name="RunManager" selected=".NET Project.KafkaConsumer">
     <configuration name="ConsoleApp1" type="DotNetProject" factoryName=".NET Project">
       <option name="EXE_PATH" value="" />
       <option name="PROGRAM_PARAMETERS" value="" />
@@ -152,9 +132,9 @@
       </method>
     </configuration>
     <configuration name="KafkaConsumer" type="DotNetProject" factoryName=".NET Project">
-      <option name="EXE_PATH" value="" />
+      <option name="EXE_PATH" value="$PROJECT_DIR$/KafkaConsumer/bin/Debug/net6.0/KafkaConsumer" />
       <option name="PROGRAM_PARAMETERS" value="" />
-      <option name="WORKING_DIRECTORY" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/KafkaConsumer/bin/Debug/net6.0" />
       <option name="PASS_PARENT_ENVS" value="1" />
       <option name="USE_EXTERNAL_CONSOLE" value="0" />
       <option name="USE_MONO" value="0" />
@@ -164,7 +144,7 @@
       <option name="PROJECT_ARGUMENTS_TRACKING" value="1" />
       <option name="PROJECT_WORKING_DIRECTORY_TRACKING" value="1" />
       <option name="PROJECT_KIND" value="DotNetCore" />
-      <option name="PROJECT_TFM" value="" />
+      <option name="PROJECT_TFM" value="net6.0" />
       <method v="2">
         <option name="Build" />
       </method>
@@ -225,7 +205,8 @@
       <workItem from="1653661793624" duration="98161000" />
       <workItem from="1654276046210" duration="41186000" />
       <workItem from="1654605124747" duration="33621000" />
-      <workItem from="1654657013758" duration="31827000" />
+      <workItem from="1654657013758" duration="33056000" />
+      <workItem from="1654778884772" duration="23023000" />
     </task>
     <servers />
   </component>
@@ -241,13 +222,13 @@
       <breakpoints>
         <line-breakpoint enabled="true" type="DotNet Breakpoints">
           <url>file://$PROJECT_DIR$/Producer/Producer.cs</url>
-          <line>99</line>
+          <line>100</line>
           <properties documentPath="$PROJECT_DIR$/Producer/Producer.cs" initialLine="95" containingFunctionPresentation="method 'ProduceAzureCloudWithSchema_kafka'">
             <startOffsets>
-              <option value="4820" />
+              <option value="4843" />
             </startOffsets>
             <endOffsets>
-              <option value="4861" />
+              <option value="4884" />
             </endOffsets>
           </properties>
           <option name="timeStamp" value="6" />
@@ -270,13 +251,13 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="DotNet Breakpoints">
           <url>file://$PROJECT_DIR$/Producer/Producer.cs</url>
-          <line>36</line>
+          <line>37</line>
           <properties documentPath="$PROJECT_DIR$/Producer/Producer.cs" initialLine="34" containingFunctionPresentation="method 'ProduceAzureCloudWithSchema_kafka'">
             <startOffsets>
-              <option value="1071" />
+              <option value="1094" />
             </startOffsets>
             <endOffsets>
-              <option value="1072" />
+              <option value="1095" />
             </endOffsets>
           </properties>
           <option name="timeStamp" value="15" />
@@ -296,13 +277,13 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="DotNet Breakpoints">
           <url>file://$PROJECT_DIR$/Producer/Producer.cs</url>
-          <line>196</line>
+          <line>197</line>
           <properties documentPath="$PROJECT_DIR$/Producer/Producer.cs" initialLine="196" containingFunctionPresentation="method 'ProduceMessageToAzureEventHubWithAvro'">
             <startOffsets>
-              <option value="8762" />
+              <option value="8785" />
             </startOffsets>
             <endOffsets>
-              <option value="8870" />
+              <option value="8893" />
             </endOffsets>
           </properties>
           <option name="timeStamp" value="21" />
@@ -426,16 +407,42 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="DotNet Breakpoints">
           <url>file://$PROJECT_DIR$/KafkaConsumer.Tests/AzureKafkaConsumerTests.cs</url>
-          <line>29</line>
+          <line>31</line>
           <properties documentPath="$PROJECT_DIR$/KafkaConsumer.Tests/AzureKafkaConsumerTests.cs" initialLine="29" containingFunctionPresentation="method 'ConsumeAsync_ShouldSubscribeToTheSameTopic_WhenTopicPassedViaOptions'">
             <startOffsets>
-              <option value="1023" />
+              <option value="1039" />
             </startOffsets>
             <endOffsets>
-              <option value="1024" />
+              <option value="1040" />
             </endOffsets>
           </properties>
           <option name="timeStamp" value="45" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="DotNet Breakpoints">
+          <url>file://$PROJECT_DIR$/KafkaConsumer/Program.cs</url>
+          <line>42</line>
+          <properties documentPath="$PROJECT_DIR$/KafkaConsumer/Program.cs" initialLine="42" containingFunctionPresentation="method 'Main'">
+            <startOffsets>
+              <option value="1441" />
+            </startOffsets>
+            <endOffsets>
+              <option value="1442" />
+            </endOffsets>
+          </properties>
+          <option name="timeStamp" value="46" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="DotNet Breakpoints">
+          <url>file://$PROJECT_DIR$/KafkaConsumer/Program.cs</url>
+          <line>52</line>
+          <properties documentPath="$PROJECT_DIR$/KafkaConsumer/Program.cs" initialLine="52" containingFunctionPresentation="method 'Main'">
+            <startOffsets>
+              <option value="1749" />
+            </startOffsets>
+            <endOffsets>
+              <option value="1750" />
+            </endOffsets>
+          </properties>
+          <option name="timeStamp" value="47" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

@@ -19,6 +19,9 @@ avrogen -s User.avsc .
 dotnet avro generate --registry-config schema.registry.basic.auth.user.info=OTGUTBCNWHDIGV45:mKMsb7UhFA+g+SCxz82iminAsQ9MHH0a3ArI4NmPjHrnU2QbVeb6/vgG2S30WN60 --id 100001 --registry-url https://psrc-kg7rp.westus2.azure.confluent.cloud
 dotnet add package Azure.Storage.Blobs
 
+export ASPNETCORE_ENVIRONMENT=Development
+echo $ASPNETCORE_ENVIRONMENT
+
 
 
 

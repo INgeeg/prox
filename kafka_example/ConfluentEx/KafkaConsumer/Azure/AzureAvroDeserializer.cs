@@ -1,22 +1,25 @@
-
-
 using System.Text;
-using Azure.Core;
 using Azure.Data.SchemaRegistry;
 using Azure.Identity;
 using Azure.Messaging.EventHubs;
 using Confluent.Kafka;
+using KafkaProducer.Azure;
 using Microsoft.Azure.Data.SchemaRegistry.ApacheAvro;
+using Microsoft.Extensions.Options;
+
+namespace KafkaConsumer.Azure;
 
 public class AzureAvroDeserializer<T> : IAsyncDeserializer<T>
 {
+    private readonly IOptions<AzureSchemaRegistryConfiguration> _schemaConfigOptions;
     private readonly SchemaRegistryAvroSerializer serializer;
-    public AzureAvroDeserializer(string schemaRegistryUrl,string schemaGroup,string tenantId, string clientId, string clientSecret)
+
+    public AzureAvroDeserializer(IOptions<AzureSchemaRegistryConfiguration> schemaConfigOptions)
     {
-        var credentials = new ClientSecretCredential(tenantId,clientId,clientSecret);
-        this.serializer = new SchemaRegistryAvroSerializer(new SchemaRegistryClient(schemaRegistryUrl, credentials), schemaGroup);
+        _schemaConfigOptions = schemaConfigOptions;
+        var credentials = new ClientSecretCredential(_schemaConfigOptions.Value.AzureTenantId,_schemaConfigOptions.Value.AzureClientId,_schemaConfigOptions.Value.AzureClientSecret);
+        this.serializer = new SchemaRegistryAvroSerializer(new SchemaRegistryClient(_schemaConfigOptions.Value.AzureSchemaRegistryUrl, credentials), _schemaConfigOptions.Value.AzureSchemaGroup);
     }
-    
 
     public Task<T> DeserializeAsync(ReadOnlyMemory<byte> data,
         bool isNull, SerializationContext context)

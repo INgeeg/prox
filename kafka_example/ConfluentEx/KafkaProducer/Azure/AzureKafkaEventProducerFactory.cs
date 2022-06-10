@@ -1,44 +1,33 @@
-
 using Confluent.Kafka;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
 
+namespace KafkaProducer.Azure;
 class AzureKafkaEventProducerFactory : IEventProducerFactory
 {
-    private readonly IOptions<AzureKafkaConfiguration> _options;
+    private readonly IOptions<AzureSchemaRegistryConfiguration> _schemaRegistryOptions;
     private readonly ILogger _logger;
-    
-    
-    public AzureKafkaEventProducerFactory(
-        IOptions<AzureKafkaConfiguration> options,
-        ILogger logger)
-    {
-        _options = options;
-        _logger = logger;
-    }
-    public IEventProducer<T> CreateProducer<T>()
-    {
-        var producerConfig = new ProducerConfig
-        {
-            BootstrapServers = _options.Value.Endpoint,
-            SecurityProtocol = SecurityProtocol.SaslSsl,
-            SaslMechanism = SaslMechanism.Plain,
-            SaslUsername = _options.Value.SaslUsername,
-            SaslPassword = _options.Value.SaslPassword
-        };
+    private readonly IOptions<ProducerConfig> _produceConfigOptions;
 
-        var producer = new ProducerBuilder<string, T>(producerConfig)
-            .SetKeySerializer(Serializers.Utf8)
-            .SetValueSerializer(new AzureAvroSerializer<T>(
-                _options.Value.SchemaRegistryUrl,
-                _options.Value.AzureSchemaGroup,
-                _options.Value.AzureTenantId,
-                _options.Value.AzureClientId,
-                _options.Value.AzureClientSecret,
-                true))
-            .SetErrorHandler((_, e) => Console.WriteLine($"Error: {e.Reason}")) // TODO: ???
+
+    public AzureKafkaEventProducerFactory(
+        IOptions<AzureSchemaRegistryConfiguration> schemaRegistryOptions,
+        ILogger logger,
+        IOptions<ProducerConfig> produceConfigOptions)
+    {
+        _schemaRegistryOptions = schemaRegistryOptions;
+        _logger = logger;
+        _produceConfigOptions = produceConfigOptions;
+    }
+    public IEventProducer<TKey,TValue> CreateEventProducer<TKey,TValue>()
+    {
+        var valueSerializer = new AzureAvroSerializer<TValue>(_schemaRegistryOptions);
+        var producer = new ProducerBuilder<TKey,TValue>(_produceConfigOptions.Value)
+            //.SetKeySerializer(Serializers.Utf8)
+            .SetValueSerializer(valueSerializer)
+            .SetErrorHandler((_, e) => _logger.LogError($"Error: {e.Reason}")) // TODO: ???
             .Build();
 
-        return new AzureKafkaProducer<T>(producer);
+        return new AzureKafkaEventProducer<TKey,TValue>(producer);
     }
 }

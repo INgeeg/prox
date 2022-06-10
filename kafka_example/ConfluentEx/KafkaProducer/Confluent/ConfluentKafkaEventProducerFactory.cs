@@ -5,43 +5,33 @@ using Confluent.SchemaRegistry.Serdes;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
 
+namespace KafkaProducer.Confluent;
 class ConfluentKafkaEventProducerFactory : IEventProducerFactory
 {
-    private readonly IOptions<ConfluentKafkaConfiguration> _options;
+    private readonly IOptions<ProducerConfig> _producerConfigOptions;
     private readonly ILogger _logger;
-    
-    
-    public ConfluentKafkaEventProducerFactory(
-        IOptions<ConfluentKafkaConfiguration> options,
-        ILogger logger)
-    {
-        _options = options;
-        _logger = logger;
-    }
-    public IEventProducer<T> CreateProducer<T>()
-    {
-        var config = new ProducerConfig
-        {
-            BootstrapServers = _options.Value.Endpoint,
-            SecurityProtocol = SecurityProtocol.SaslSsl,
-            SaslMechanism = SaslMechanism.Plain,
-            SaslUsername = _options.Value.SaslUsername,
-            SaslPassword = _options.Value.SaslPassword
-        };
+    private readonly IOptions<SchemaRegistryConfig> _schemaRegistryConfigOptions;
 
-        var schemaRegistryConfig = new SchemaRegistryConfig
-        {
-            Url = _options.Value.SchemaRegistryUrl,
-            BasicAuthCredentialsSource = AuthCredentialsSource.UserInfo,
-            BasicAuthUserInfo = _options.Value.SchemaRegistryUrlBasicAuth
-        };
-        var schemaRegistry = new CachedSchemaRegistryClient(schemaRegistryConfig);
-        var producer =  new ProducerBuilder<string, T>(config)
-            .SetKeySerializer(Serializers.Utf8)
-            .SetValueSerializer(new AvroSerializer<T>(schemaRegistry))
+
+    public ConfluentKafkaEventProducerFactory(
+        IOptions<ProducerConfig> producerConfigOptions,
+        ILogger logger,
+        IOptions<SchemaRegistryConfig> schemaRegistryConfigOptions
+        )
+    {
+        _producerConfigOptions = producerConfigOptions;
+        _logger = logger;
+        _schemaRegistryConfigOptions = schemaRegistryConfigOptions;
+    }
+    public IEventProducer<TKey, TValue> CreateEventProducer<TKey, TValue>()
+    {
+        var schemaRegistry = new CachedSchemaRegistryClient(_schemaRegistryConfigOptions.Value);
+        var producer =  new ProducerBuilder<TKey, TValue>(_producerConfigOptions.Value)
+            //.SetKeySerializer(new AvroSerializer<TKey>(schemaRegistry))
+            .SetValueSerializer(new AvroSerializer<TValue>(schemaRegistry))
             .SetErrorHandler((_, e) => Console.WriteLine($"Error: {e.Reason}"))
             .Build();
 
-        return new ConfluentKafkaProducer<T>(producer);
+        return new ConfluentKafkaEventProducer<TKey, TValue>(producer);
     }
 }

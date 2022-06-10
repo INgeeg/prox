@@ -5,8 +5,8 @@
         <TargetFramework>net6.0</TargetFramework>
         <ImplicitUsings>enable</ImplicitUsings>
         <Nullable>enable</Nullable>
-        <StartupObject>Program</StartupObject>
-        <RootNamespace>KafkaConsumer</RootNamespace>
+        <StartupObject>KafkaConsumer.Program</StartupObject>
+        <UserSecretsId>31719f39-2a72-47a2-a2c6-94b9582e1a17</UserSecretsId>
     </PropertyGroup>
 
     <ItemGroup>
@@ -22,7 +22,7 @@
 
     <ItemGroup>
       <None Update="appsettings.json">
-        <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+        <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
       </None>
     </ItemGroup>
 </Project>
