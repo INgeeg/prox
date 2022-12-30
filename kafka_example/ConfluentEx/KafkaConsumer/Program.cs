@@ -1,10 +1,12 @@
 using AvroSpecific;
 using KafkaConsumer.Azure;
 using KafkaConsumer.Confluent;
+using KafkaProducer.Azure;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
+using Microsoft.Extensions.Options;
 
 namespace KafkaConsumer;
 public class Program
@@ -36,6 +38,8 @@ public class Program
                 topic = "my_topic";
             }
         }).Build();
+        
+        var options = host.Services.GetRequiredService<IOptions<AzureSchemaRegistryConfiguration>>();
         
         var factory = host.Services.GetRequiredService<IEventConsumerFactory>();
 

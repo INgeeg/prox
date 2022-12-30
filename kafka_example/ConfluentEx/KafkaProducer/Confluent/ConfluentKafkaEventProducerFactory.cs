@@ -23,13 +23,15 @@ class ConfluentKafkaEventProducerFactory : IEventProducerFactory
         _logger = logger;
         _schemaRegistryConfigOptions = schemaRegistryConfigOptions;
     }
+    
+    
+    
+    
     public IEventProducer<TKey, TValue> CreateEventProducer<TKey, TValue>()
     {
         var schemaRegistry = new CachedSchemaRegistryClient(_schemaRegistryConfigOptions.Value);
         var producer =  new ProducerBuilder<TKey, TValue>(_producerConfigOptions.Value)
-            //.SetKeySerializer(new AvroSerializer<TKey>(schemaRegistry))
             .SetValueSerializer(new AvroSerializer<TValue>(schemaRegistry))
-            .SetErrorHandler((_, e) => Console.WriteLine($"Error: {e.Reason}"))
             .Build();
 
         return new ConfluentKafkaEventProducer<TKey, TValue>(producer);

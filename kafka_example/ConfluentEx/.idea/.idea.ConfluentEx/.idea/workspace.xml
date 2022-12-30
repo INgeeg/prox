@@ -22,9 +22,6 @@
     <setting file="mock:///Dummy.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="mock:///Dummy.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="mock:///Dummy.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock:///Dummy.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock:///Dummy.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock:///Dummy.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/../../../catalyst-service-dotnetcore-starter-master/src/Payment.Api/Program.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/KafkaConsumer/obj/Debug/net6.0/KafkaConsumer.AssemblyInfo.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/b2a7bd2c3c4443b59303006c88fdcdd23e200/17/f7141410/IDeserializer`1.cs" root0="SKIP_HIGHLIGHTING" />
@@ -206,7 +203,8 @@
       <workItem from="1654276046210" duration="41186000" />
       <workItem from="1654605124747" duration="33621000" />
       <workItem from="1654657013758" duration="33056000" />
-      <workItem from="1654778884772" duration="23023000" />
+      <workItem from="1654778884772" duration="23087000" />
+      <workItem from="1654871077947" duration="12449000" />
     </task>
     <servers />
   </component>
@@ -232,22 +230,6 @@
             </endOffsets>
           </properties>
           <option name="timeStamp" value="6" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="DotNet Breakpoints">
-          <url>mock:///Dummy.cs</url>
-          <line>61</line>
-          <properties documentPath="/Dummy.cs" initialLine="61" isMultiMethodBreakpoint="true">
-            <option name="multiMethodBreakpoint" value="true" />
-          </properties>
-          <option name="timeStamp" value="10" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="DotNet Breakpoints">
-          <url>mock:///Dummy.cs</url>
-          <line>99</line>
-          <properties documentPath="/Dummy.cs" initialLine="99" isMultiMethodBreakpoint="true">
-            <option name="multiMethodBreakpoint" value="true" />
-          </properties>
-          <option name="timeStamp" value="12" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="DotNet Breakpoints">
           <url>file://$PROJECT_DIR$/Producer/Producer.cs</url>
@@ -420,29 +402,42 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="DotNet Breakpoints">
           <url>file://$PROJECT_DIR$/KafkaConsumer/Program.cs</url>
-          <line>42</line>
+          <line>46</line>
           <properties documentPath="$PROJECT_DIR$/KafkaConsumer/Program.cs" initialLine="42" containingFunctionPresentation="method 'Main'">
             <startOffsets>
-              <option value="1441" />
+              <option value="1615" />
             </startOffsets>
             <endOffsets>
-              <option value="1442" />
+              <option value="1616" />
             </endOffsets>
           </properties>
           <option name="timeStamp" value="46" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="DotNet Breakpoints">
           <url>file://$PROJECT_DIR$/KafkaConsumer/Program.cs</url>
-          <line>52</line>
+          <line>56</line>
           <properties documentPath="$PROJECT_DIR$/KafkaConsumer/Program.cs" initialLine="52" containingFunctionPresentation="method 'Main'">
             <startOffsets>
-              <option value="1749" />
+              <option value="1923" />
             </startOffsets>
             <endOffsets>
-              <option value="1750" />
+              <option value="1924" />
             </endOffsets>
           </properties>
           <option name="timeStamp" value="47" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="DotNet Breakpoints">
+          <url>file://$PROJECT_DIR$/KafkaConsumer/Program.cs</url>
+          <line>43</line>
+          <properties documentPath="$PROJECT_DIR$/KafkaConsumer/Program.cs" initialLine="43" containingFunctionPresentation="method 'Main'">
+            <startOffsets>
+              <option value="1466" />
+            </startOffsets>
+            <endOffsets>
+              <option value="1538" />
+            </endOffsets>
+          </properties>
+          <option name="timeStamp" value="48" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
